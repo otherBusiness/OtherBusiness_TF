@@ -44,17 +44,18 @@ public class Project implements Serializable{
 	@Column(name = "costProject", nullable = false)
 	private double costProject;
 	
-	
+	@NotNull(message="Inicio de fecha es obligatorio")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "startDateProject", nullable = false)
 	@Temporal(value = TemporalType.DATE)
 	private Date startDateProject;
 	
-
+	@NotNull(message="Inicio de fin es obligatorio")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "finishDateProject", nullable = false)
 	@Temporal(value = TemporalType.DATE)
 	private Date finishDateProject;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "idCategory")
