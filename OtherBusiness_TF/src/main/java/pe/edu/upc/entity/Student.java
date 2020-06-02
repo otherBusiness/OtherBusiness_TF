@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "students")
@@ -25,10 +28,13 @@ public class Student implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idStudent;
 	
+	@Email(message="No cuenta con el formato email")
+	@NotEmpty(message="El email es obligatorio")
 	@Column(name = "emailStudent", nullable = false, length = 25)
 	private String emailStudent;
 	
-	@Column(name = "codeStudent", nullable = false, length = 9)
+	@NotNull(message="El codigo es obligatorio")
+	@Column(name = "codeStudent", nullable = false, unique = true, length = 9)
 	private int codeStudent;
 	
 	@OneToOne
