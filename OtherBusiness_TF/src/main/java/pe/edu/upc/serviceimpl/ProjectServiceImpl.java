@@ -17,17 +17,23 @@ public class ProjectServiceImpl implements IProjectService {
 	@Autowired
 	private IProjectRepository pR;
 	
-	@Transactional
-	@Override
-	public void insert(Project project) {
-	pR.save(project);
-		
-	}
+	
 
 	@Override
 	public List<Project> list() {
 		// TODO Auto-generated method stub
 		return pR.findAll();
+	}
+
+
+
+	@Override
+	public int insert(Project project) {
+		int rpta=pR.searchProject(project.getNameProject());
+		if(rpta==0) {
+			pR.save(project);
+		}
+		return rpta;
 	}
 
 }
