@@ -36,4 +36,16 @@ public class ProjectServiceImpl implements IProjectService {
 		return rpta;
 	}
 
+/*
+	@Override
+	public List<Project> findNameProjectFull(String nameProject) {
+		return pR.findBynameProject(nameProject);
+	}
+
+
+	*/
+
+
+	
+
 }

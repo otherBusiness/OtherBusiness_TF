@@ -8,4 +8,6 @@ public interface IProjectService {
 public int insert(Project project);
 
 List<Project> list();
+
+/* List<Project> findNameProjectFull(String nameProject); */
 }
