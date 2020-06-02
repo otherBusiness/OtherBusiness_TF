@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "projects")
 public class Project implements Serializable{
@@ -36,10 +38,12 @@ public class Project implements Serializable{
 	@Column(name = "costProject", nullable = false)
 	private double costProject;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "startDateProject", nullable = false)
 	@Temporal(value = TemporalType.DATE)
 	private Date startDateProject;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "finishDateProject", nullable = false)
 	@Temporal(value = TemporalType.DATE)
 	private Date finishDateProject;
