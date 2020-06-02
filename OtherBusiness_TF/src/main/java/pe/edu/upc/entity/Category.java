@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "categories")
@@ -22,6 +24,8 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategory;
 	
+	@NotEmpty(message="El nombre es obligatorio")
+	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener letras")
 	@Column(name = "nameCategory", nullable = false, length = 25)
 	private String nameCategory;
 
