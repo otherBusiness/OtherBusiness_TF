@@ -26,7 +26,7 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 
-
+	@Transactional
 	@Override
 	public int insert(Project project) {
 		int rpta=pR.searchProject(project.getNameProject());
