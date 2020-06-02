@@ -9,5 +9,5 @@ import pe.edu.upc.entity.Project;
 @Repository
 public interface IProjectRepository extends JpaRepository<Project, Integer>{
 	@Query("select count (p.nameProject) from Project p where p.nameProject= LOWER(:nameProject) or p.nameProject=UPPER(:nameProject)")
-	public int searchProject(@Param("nameProject") String proyecto);
+	public int searchProject(@Param("nameProject") String nombre);
 }

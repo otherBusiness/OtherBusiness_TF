@@ -33,7 +33,7 @@ public class ProjectController {
 	@PostMapping("/save")
 	public String saveProject(@Validated Project project, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {
-			model.addAttribute("listCategories", cS.list());
+			/*model.addAttribute("listCategories", cS.list());*/
 			return "project/project";
 		}else {
 			int rpta=pS.insert(project);
