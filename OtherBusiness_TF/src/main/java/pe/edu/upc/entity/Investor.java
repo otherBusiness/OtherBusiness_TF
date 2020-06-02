@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "investors")
@@ -24,15 +27,20 @@ public class Investor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idInvestor;
 	
+	@NotNull(message="El ruc es obligatorio")
 	@Column(name = "rucInvestor", nullable = false, length = 11)
 	private int rucInvestor;
 	
+	@NotEmpty(message = "El pais es obligatorio")
 	@Column(name = "countryInvestor", nullable = false, length = 25)
 	private String countryInvestor;
 	
+	@NotEmpty(message = "El distrito es obligatorio")
 	@Column(name = "districtInvestor", nullable = false, length = 25)
 	private String districtInvestor;
 	
+	@Email(message = "El email no cuenta con el formato")
+	@NotEmpty(message = "El email es obligatorio")
 	@Column(name = "emailInvestor", nullable = false, length = 50)
 	private String emailInvestor;
 	
