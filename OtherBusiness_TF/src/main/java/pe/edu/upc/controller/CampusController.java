@@ -1,5 +1,7 @@
 package pe.edu.upc.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.entity.Campus;
 import pe.edu.upc.serviceinterface.ICampusService;
@@ -57,4 +61,40 @@ public class CampusController {
 		return "campus/listCampus";
 	}
 
+	
+	@RequestMapping ("/delete/{id}")   //atiende solicitud a traves de esta peticion 
+	public String deleteCampus(Model model,@PathVariable(value="id")int id) {
+		try {
+			//llamar al service y hacer la eliminacion
+			if(id>0) {cS.delete(id);}//ver si existe
+			model.addAttribute("listCampus",cS.list());
+			model.addAttribute("mensaje","Se elimino de la lista");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			model.addAttribute("mensaje","Ocurrio un error al eliminar de la lista");
+			model.addAttribute("listCampus",cS.list());
+
+		}
+		return "campus/listCampus";
+	}
+	
+	
+	@RequestMapping("/irupdate/{id}")
+	public String irUpdate(@PathVariable int id, Model model,RedirectAttributes objRedir)
+	{//conectar con el service donde estan los metodos
+		Optional<Campus> objCamp=cS.searchId(id);
+		if(objCamp==null) {
+			objRedir.addFlashAttribute("mensaje","ocurrio un error");
+			return "redirect:/campus/list";
+		}else {
+			model.addAttribute("listCampus",cS.list());
+			model.addAttribute("campus",objCamp.get());
+			model.addAttribute("mensaje","Guardar para actualizar");
+
+			return "campus/campus";
+		}
+								
+	}
+	
 }

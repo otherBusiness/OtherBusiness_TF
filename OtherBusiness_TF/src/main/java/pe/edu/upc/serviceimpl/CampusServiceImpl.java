@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -32,6 +33,19 @@ public class CampusServiceImpl implements ICampusService { // conectar con el re
 			cR.save(campus);
 		} // si es igual a cero no existe por lo tanto inserto  //saber si existe o no a travez de una varible entera
 		return rpta;
+	}
+
+	@Override
+	public void delete(int idCampus) {
+		// TODO Auto-generated method stub
+		cR.deleteById(idCampus);//pasar al controller
+
+	}
+
+	@Override
+	public Optional<Campus> searchId(int idProduct) {
+		// TODO Auto-generated method stub
+		return cR.findById(idProduct);
 	}
 
 }
