@@ -51,4 +51,5 @@ public class InvestorController {
 		}
 		return "investor/listInvestors";
 	}
+	
 }
