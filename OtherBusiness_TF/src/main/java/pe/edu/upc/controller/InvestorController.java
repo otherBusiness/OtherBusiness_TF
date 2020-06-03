@@ -41,6 +41,7 @@ public class InvestorController {
 		}
 	}
 	
+	@GetMapping("/list")
 	public String listaInvestors(Model model) {
 		try {
 			model.addAttribute("listInvestors", iS.list());
