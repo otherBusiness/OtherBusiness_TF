@@ -25,7 +25,11 @@ public class ProjectServiceImpl implements IProjectService {
 		return pR.findAll();
 	}
 
-
+	
+	/*public void insert(Project project) {
+		pR.save(project);
+	}*/
+	
 	@Transactional
 	@Override
 	public int insert(Project project) {

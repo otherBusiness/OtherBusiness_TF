@@ -230,6 +230,20 @@
 										th:selected="(${c.idCategory} == *{category.idCategory})"></option>
 								</select>
 							</div>
+							</div>
+							
+							<div class="form-group row">
+							<label for="category">Estudiante:</label>
+							<div class="col-sm-6">
+								<select class="form-control" th:field="*{student.idStudent}">
+									<option th:each="s: ${listStudents}"
+										th:value="${s.idStudent}" th:text="${s.codeStudent}"
+										th:selected="(${s.idStudent} == *{student.idStudent})"></option>
+								</select>
+							</div>
+							
+							
+							
 						</div>
 				</div>
 

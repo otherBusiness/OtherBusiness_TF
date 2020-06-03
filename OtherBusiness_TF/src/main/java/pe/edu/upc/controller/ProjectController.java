@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.entity.Project;
 import pe.edu.upc.serviceinterface.ICategoryService;
 import pe.edu.upc.serviceinterface.IProjectService;
+import pe.edu.upc.serviceinterface.IStudentService;
 
 @Controller
 @RequestMapping("projects")
@@ -26,10 +27,14 @@ public class ProjectController {
 	@Autowired
 	 private ICategoryService cS; 
 	
+	@Autowired
+	private IStudentService sS;
+	
 	
 	@GetMapping("/new")
 	public String newProject(Model model) {
 		model.addAttribute("listCategories", cS.list());
+		model.addAttribute("listStudents", sS.list());
 		model.addAttribute("project", new Project());
 		return "project/project";
 	}
@@ -37,18 +42,22 @@ public class ProjectController {
 	@PostMapping("/save")
 	public String saveProject(@Validated Project project, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {
-			/*model.addAttribute("listCategories", cS.list());*/
+			model.addAttribute("listCategories", cS.list());
+			model.addAttribute("listStudents", sS.list());
 			return "project/project";
 		}else {
 			int rpta=pS.insert(project);
 			if(rpta>0) {
 				model.addAttribute("mensaje","Ya existe el proyecto");
+				model.addAttribute("listCategories",cS.list());
+				model.addAttribute("listStudents",sS.list());
 				return "project/project";
 			}else {
 				/*pS.insert(project);*/
 				/*model.addAttribute("mensaje","Se guardo correctamente");*/
+				model.addAttribute("mensaje", "Se guardo correctamente");
 				model.addAttribute("listProjects",pS.list());
-				return "project/listProjects"; 
+				return "redirect:/projects/list"; 
 			}
 			
 		}
