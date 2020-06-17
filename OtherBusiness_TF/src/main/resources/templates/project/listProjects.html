@@ -159,7 +159,30 @@
 					<h1 class="h3 mb-4 text-gray-800">Proyectos</h1>
 
 					<a th:href="@{/projects/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
+					
+					<form th:action="@{/projects/search}" method="post"
+						th:object="${project}">
+						<div class="form-group">
+							<table>
 
+								<tbody>
+									<tr>
+										<td><label for="nameProject"
+											class="col-sm-2 col-form-label">Buscar:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{nameProject}" id="nameProject"
+											placeholder="Nombre Proyecto" required="required"></input></td>
+										<td><button type="submit" class="btn btn-danger">
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/projects/list" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					
+					
 					<hr class="sidebar-divider">
 
 					<table class="table table-striped">

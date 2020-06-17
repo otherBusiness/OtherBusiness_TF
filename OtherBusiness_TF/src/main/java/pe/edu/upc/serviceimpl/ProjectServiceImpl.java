@@ -55,15 +55,22 @@ public class ProjectServiceImpl implements IProjectService {
 		return pR.findById(idProject);
 	}
 
-/*
+
 	@Override
-	public List<Project> findNameProjectFull(String nameProject) {
-		return pR.findBynameProject(nameProject);
+	public List<Project> search(String busqueda) {
+		// TODO Auto-generated method stub
+		return pR.search(busqueda);
 	}
 
 
-	*/
+	
 
+
+
+
+
+
+	
 
 	
 

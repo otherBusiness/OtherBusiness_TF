@@ -1,8 +1,8 @@
 package pe.edu.upc.controller;
 
+import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
-
-/*import java.util.List;*/
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-/*import com.sun.el.parser.ParseException;*/
 
 import pe.edu.upc.entity.Project;
 import pe.edu.upc.serviceinterface.ICategoryService;
@@ -73,6 +71,7 @@ public class ProjectController {
 	@GetMapping("/list")
 	public String listProject(Model model) {
 		try {
+			model.addAttribute("project", new Project());
 			model.addAttribute("listProjects",pS.list());
 		}catch (Exception e) {
 			model.addAttribute("error",e.getMessage());
@@ -111,17 +110,20 @@ public class ProjectController {
 		}
 		
 	}
-/*	
+
 	@RequestMapping("/search")
 	public String searchCategories(Model model, @Validated Project project) throws ParseException {
 		List<Project> listProjects;
-		listProjects = pS.findNameProjectFull(project.getNameProject());
+		listProjects = pS.search(project.getNameProject());
 		if (listProjects.isEmpty()) {
 			model.addAttribute("mensaje", "No se encontró");
 		}
 		model.addAttribute("listProjects", listProjects);
 
-		return "product/listProjects";
+		return "project/listProjects";
 
-	} */
+	} 
+	
+	
+	
 }

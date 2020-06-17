@@ -15,5 +15,5 @@ public void delete(int idProject);
 Optional<Project> searchId(int idProject);
 
 
-/* List<Project> findNameProjectFull(String nameProject); */
+public List<Project> search(String busqueda);
 }
