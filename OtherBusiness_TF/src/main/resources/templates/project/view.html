@@ -145,8 +145,7 @@
 				<!-- End of Topbar -->
 				<div class="container">
 					<div class="card">
-						<div class="card-header text-white bg-dark mb-3">Detalle de
-							Producto</div>
+						<div class="card-header text-white bg-dark mb-3">Detalle del proyecto </div>
 						<div class="card-body">
 
 							<div class="table-responsive">
@@ -155,7 +154,7 @@
 									<tbody>
 										<tr>
 											<td>CODIGO</td>
-											<td th:text="${project.idPrject}"></td>
+											<td th:text="${project.idProject}"></td>
 										</tr>
 										<tr>
 											<td>Proyecto</td>
@@ -177,7 +176,7 @@
 
 										<tr>
 											<td>Fecha de fin del proyecto</td>
-											<td th:text="${project.finishDateProduct}"></td>
+											<td th:text="${project.finishDateProject}"></td>
 										</tr>
 
 
@@ -203,7 +202,7 @@
 
 								</table>
 
-								<a th:href="@{/products/list}" type="button"
+								<a th:href="@{/projects/list}" type="button"
 									class="btn btn-danger k"> <span
 									class="glyphicon glyphicon-circle-arrow-left"></span> Volver
 								</a>

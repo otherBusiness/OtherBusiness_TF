@@ -198,7 +198,7 @@ public class ProjectController {
         }
         model.addAttribute("listaProjects", pS.list());
 
-        return "redirect:/project/list";
+        return "redirect:/projects/list";
     }
 
     @GetMapping(value = "/view/{id}")

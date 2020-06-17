@@ -155,7 +155,7 @@
 					</div>
 
 					<form th:action="@{/projects/save}" th:object="${project}"
-						method="post">
+						method="post" enctype="multipart/form-data">
 
 						<div class="form-group row">
 							<label for="id" class="col-sm-2 col-form-label">Codigo</label>
