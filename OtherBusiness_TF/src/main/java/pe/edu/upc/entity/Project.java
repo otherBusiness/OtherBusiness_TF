@@ -28,6 +28,8 @@ public class Project implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProject;
@@ -65,13 +67,26 @@ public class Project implements Serializable{
 	@JoinColumn(name = "idStudent")
 	private Student student;
 
+	
+	private String foto;
+	public String getFoto() {
+		return foto;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
 	public Project() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Project(int idProject, String nameProject, String descriptionProject, double costProject,
-			Date startDateProject, Date finishDateProject, Category category, Student student) {
+
+
+	public Project(int idProject, @NotEmpty(message = "Debe ingresar nombre del proyecto") String nameProject,
+			String descriptionProject, double costProject, Date startDateProject, Date finishDateProject,
+			Category category, Student student, String foto) {
 		super();
 		this.idProject = idProject;
 		this.nameProject = nameProject;
@@ -81,6 +96,7 @@ public class Project implements Serializable{
 		this.finishDateProject = finishDateProject;
 		this.category = category;
 		this.student = student;
+		this.foto = foto;
 	}
 
 	public int getIdProject() {

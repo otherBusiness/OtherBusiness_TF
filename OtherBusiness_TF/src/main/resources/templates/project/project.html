@@ -38,12 +38,11 @@
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				th:href="@{/categories/list}">
 				<div class="sidebar-brand-icon">
-					<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-									th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-									align="middle"></img></span>
+					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><img
+						th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
+						align="middle"></img></span>
 				</div>
-				
+
 			</a>
 
 			<!-- Divider -->
@@ -72,7 +71,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/investors/list}">Inversores</a>
 					</div>
-					
+
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -157,19 +156,18 @@
 
 					<form th:action="@{/projects/save}" th:object="${project}"
 						method="post">
-						
+
 						<div class="form-group row">
 							<label for="id" class="col-sm-2 col-form-label">Codigo</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{idProject}"
-									class="form-control"
+								<input type="text" th:field="*{idProject}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('idProject')}"
 									th:errors="*{idProject}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">Proyecto</label>
 							<div class="col-sm-6">
@@ -181,10 +179,11 @@
 									th:errors="*{nameProject}"></small>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="form-group row">
-						<label for="description" class="col-sm-2 col-form-label">Descripcion del proyecto</label>
+							<label for="description" class="col-sm-2 col-form-label">Descripcion
+								del proyecto</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{descriptionProject}"
 									class="form-control"
@@ -194,10 +193,11 @@
 									th:errors="*{descriptionProject}"></small>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="form-group row">
-							<label for="cost" class="col-sm-2 col-form-label">Costo del proyecto</label>
+							<label for="cost" class="col-sm-2 col-form-label">Costo
+								del proyecto</label>
 							<div class="col-sm-6">
 								<input type="number" th:field="*{costProject}"
 									class="form-control"
@@ -207,9 +207,10 @@
 									th:errors="*{costProject}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
-							<label for="datestart" class="col-sm-2 col-form-label">Fecha de inicio del proyecto</label>
+							<label for="datestart" class="col-sm-2 col-form-label">Fecha
+								de inicio del proyecto</label>
 							<div class="col-sm-6">
 								<input type="date" th:field="*{startDateProject}"
 									class="form-control"
@@ -219,9 +220,10 @@
 									th:errors="*{startDateProject}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
-							<label for="datefinish" class="col-sm-2 col-form-label">Fecha de fin del proyecto</label>
+							<label for="datefinish" class="col-sm-2 col-form-label">Fecha
+								de fin del proyecto</label>
 							<div class="col-sm-6">
 								<input type="date" th:field="*{finishDateProject}"
 									class="form-control"
@@ -231,8 +233,8 @@
 									th:errors="*{finishDateProject}"></small>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="form-group row">
 							<label for="category">Categoría:</label>
 							<div class="col-sm-6">
@@ -242,20 +244,24 @@
 										th:selected="(${c.idCategory} == *{category.idCategory})"></option>
 								</select>
 							</div>
-							</div>
-							
-							<div class="form-group row">
+						</div>
+
+						<div class="form-group row">
 							<label for="category">Estudiante:</label>
 							<div class="col-sm-6">
 								<select class="form-control" th:field="*{student.idStudent}">
-									<option th:each="s: ${listStudents}"
-										th:value="${s.idStudent}" th:text="${s.codeStudent}"
+									<option th:each="s: ${listStudents}" th:value="${s.idStudent}"
+										th:text="${s.codeStudent}"
 										th:selected="(${s.idStudent} == *{student.idStudent})"></option>
 								</select>
 							</div>
-							
-							
-							
+						</div>
+						<div class="form-group row">
+							<label for="file" class="col-sm-2 col-form-label ">Foto:</label>
+							<div class="col-sm-6">
+								<input type="file" name="file" class="form-control"
+									th:text="${project.foto}" required="required" />
+							</div>
 						</div>
 				</div>
 
@@ -269,7 +275,7 @@
 				</div>
 
 				</form>
-				
+
 				<p th:text="${mensaje}" class="form-text text-success"></p>
 
 
@@ -339,3 +345,4 @@
 </body>
 
 </html>
+
