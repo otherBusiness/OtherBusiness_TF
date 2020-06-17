@@ -1,5 +1,7 @@
 package pe.edu.upc.controller;
 
+import java.util.Optional;
+
 /*import java.util.List;*/
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /*import com.sun.el.parser.ParseException;*/
 
@@ -91,6 +94,22 @@ public class ProjectController {
 		model.addAttribute("listProjects",pS.list());
 		}
 		return "project/listProjects";
+	}
+	
+	@RequestMapping("/irupdate/{id}")
+	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
+		Optional<Project> objPro=pS.searchId(id);
+		if(objPro==null){
+			objRedir.addFlashAttribute("mensaje","Ocurrio un error");
+			return "redirect:/projects/list";
+		}else {
+			model.addAttribute("listCategories",cS.list());
+			model.addAttribute("listStudents",sS.list());
+			model.addAttribute("project",objPro.get());
+			model.addAttribute("mensaje","Guardar para actualizar");
+		return "project/project";
+		}
+		
 	}
 /*	
 	@RequestMapping("/search")

@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -45,6 +46,13 @@ public class ProjectServiceImpl implements IProjectService {
 	public void delete(int idProject) {
 		pR.deleteById(idProject);
 		
+	}
+
+
+	@Override
+	public Optional<Project> searchId(int idProject) {
+		// TODO Auto-generated method stub
+		return pR.findById(idProject);
 	}
 
 /*

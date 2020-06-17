@@ -12,7 +12,7 @@ List<Project> list();
 
 public void delete(int idProject);
 
-
+Optional<Project> searchId(int idProject);
 
 
 /* List<Project> findNameProjectFull(String nameProject); */
