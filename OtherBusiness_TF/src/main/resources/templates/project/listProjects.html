@@ -173,6 +173,7 @@
 								<th scope="col">Fecha de fin del proyecto</th>
 								<th scope="col">Categor&iacute;a</th>
 								<th scope="col">Codigo del del estudiante</th>
+								<th scope="col">Eliminar</th>
 
 
 							</tr>
@@ -187,6 +188,10 @@
 								<td th:text="${p.finishDateProject}"></td>
 								<td th:text="${p.category.nameCategory}"></td>
 								<td th:text="${p.student.codeStudent}"></td>
+								<td><a
+									th:href="@{'/projects/delete/'+${p.idProject}}"> <i
+										class="iconf fa fa-trash" style="color: red"></i>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>

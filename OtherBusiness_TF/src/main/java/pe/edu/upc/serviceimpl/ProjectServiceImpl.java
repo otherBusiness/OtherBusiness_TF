@@ -40,6 +40,13 @@ public class ProjectServiceImpl implements IProjectService {
 		return rpta;
 	}
 
+	@Transactional
+	@Override
+	public void delete(int idProject) {
+		pR.deleteById(idProject);
+		
+	}
+
 /*
 	@Override
 	public List<Project> findNameProjectFull(String nameProject) {
