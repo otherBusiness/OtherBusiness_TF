@@ -39,15 +39,13 @@
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				th:href="@{/categories/list}">
 				<div class="sidebar-brand-icon">
-					<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-									th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-									align="middle"></img></span>
+					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><img
+						th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
+						align="middle"></img></span>
 				</div>
-				
 			</a>
-
-			<!-- Divider -->
+		
+		<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 
@@ -155,6 +153,8 @@
 
 					<a th:href="@{/categories/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 
+					
+
 					<hr class="sidebar-divider">
 
 					<table class="table table-striped">
@@ -162,12 +162,20 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Nombre</th>
+								<th scope="col" class="text-center">Eliminar</th>
+								<th scope="col" class="text-center">Modificar</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="cate: ${listCategories}">
 								<td th:text="${cate.idCategory}"></td>
 								<td th:text="${cate.nameCategory}"></td>
+								<td class="text-center"><a
+									th:href="@{'/categories/delete/'+${cate.idCategory}}"><i
+										class="iconf fa fa-trash" style="color: red;"></i></a></td>
+								<td class="text-center"><a
+									th:href="@{'/categories/irupdate/'+${cate.idCategory}}"><i
+										class="iconf fa fa-pen" style="color: red"></i> </a></td>
 							</tr>
 						</tbody>
 					</table>
