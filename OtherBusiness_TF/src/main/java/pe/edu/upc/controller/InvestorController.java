@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.entity.Investor;
-import pe.edu.upc.entity.Student;
+import pe.edu.upc.serviceinterface.ICountryService;
 import pe.edu.upc.serviceinterface.IInvestorService;
 
 @Controller
@@ -26,9 +26,14 @@ public class InvestorController {
 
 	@Autowired
 	private IInvestorService iS;
+	
+	@Autowired
+	private ICountryService cS;
+	
 
 	@GetMapping("/new")
 	public String newInvestor(Model model) {
+		model.addAttribute("listCountry", cS.list());
 		model.addAttribute("investor", new Investor());
 		return "investor/investor";
 	}
@@ -36,15 +41,17 @@ public class InvestorController {
 	@PostMapping("/save")
 	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
+			model.addAttribute("listCountry", cS.list());
 			return "investor/investor";
 		} else {
 			int rpta = iS.insert(investor);
 			if (rpta > 0) {
 				model.addAttribute("mensaje", "Ya existe ese inversionista");
+				model.addAttribute("listCountry", cS.list());
 				return "investor/investor";
 			} else {
 				model.addAttribute("listInvestors", iS.list());
-				return "investor/listInvestors";
+				return "redirect:/investors/list";
 			}
 		}
 	}
@@ -84,6 +91,7 @@ public class InvestorController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/investor/list";
 		} else {
+			model.addAttribute("listCountry", cS.list());
 			model.addAttribute("investor", objStu.get());
 			return "investor/investor";
 		}

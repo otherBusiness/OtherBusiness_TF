@@ -38,10 +38,9 @@
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				th:href="@{/categories/list}">
 				<div class="sidebar-brand-icon">
-					<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-									th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-									align="middle"></img></span>
+					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><img
+						th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
+						align="middle"></img></span>
 				</div>
 
 			</a>
@@ -156,21 +155,21 @@
 
 					<form th:action="@{/investors/save}" th:object="${investor}"
 						method="post">
-						
+
 						<div class="form-group row">
 							<label for="id" class="col-sm-2 col-form-label">Id</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{idInvestor}"
-									class="form-control"
+								<input type="text" th:field="*{idInvestor}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('idInvestor')}"
 									th:errors="*{idInvestor}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Nombres: </label>
+							<label for="name" class="col-sm-2 col-form-label">Nombres:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.firstNameCustomer}"
 									class="form-control"
@@ -178,7 +177,8 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Apellidos: </label>
+							<label for="name" class="col-sm-2 col-form-label">Apellidos:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.lastNameCustomer}"
 									class="form-control"
@@ -194,14 +194,15 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Celular: </label>
+							<label for="name" class="col-sm-2 col-form-label">Celular:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.phoneCustomer}"
 									class="form-control"
 									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
-												
+
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">RUC: </label>
 							<div class="col-sm-6">
@@ -213,21 +214,21 @@
 									th:errors="*{rucInvestor}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Pais: </label>
+							<label for="category">País:</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{countryInvestor}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('countryInvestor')}"
-									th:errors="*{countryInvestor}"></small>
+								<select class="form-control" th:field="*{country.idCountry}">
+									<option th:each="c: ${listCountry}" 
+										th:value="${c.idCountry}" th:text="${c.nameCountry}"
+										th:selected="(${c.idCountry} == *{country.idCountry})"></option>
+								</select>
 							</div>
 						</div>
 
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Distrito: </label>
+							<label for="name" class="col-sm-2 col-form-label">Distrito:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{districtInvestor}"
 									class="form-control"
@@ -237,9 +238,10 @@
 									th:errors="*{districtInvestor}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Email: </label>
+							<label for="name" class="col-sm-2 col-form-label">Email:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{emailInvestor}"
 									class="form-control"
@@ -249,7 +251,7 @@
 									th:errors="*{emailInvestor}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
 							<div class="col-sm-6">
 								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
