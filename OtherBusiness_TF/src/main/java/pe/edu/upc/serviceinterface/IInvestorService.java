@@ -14,5 +14,5 @@ public interface IInvestorService {
 	
 	Optional<Investor> searchId(int idInvestor);
 	
-	List<Investor> findRucInvestor(int rucInvestor);
+	List<Investor> findRucInvestor(String rucInvestor);
 }

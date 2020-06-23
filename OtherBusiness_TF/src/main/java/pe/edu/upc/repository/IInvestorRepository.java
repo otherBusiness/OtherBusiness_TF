@@ -10,7 +10,7 @@ import pe.edu.upc.entity.Investor;
 
 public interface IInvestorRepository extends JpaRepository<Investor, Integer>{
 	@Query("select count(i.rucInvestor) from Investor i where rucInvestor=:rucInvestor")
-	public int searchInvestor(@Param("rucInvestor") int ruc);
+	public int searchInvestor(@Param("rucInvestor") String ruc);
 	
-	List<Investor> findByRucInvestor(int ruc);
+	List<Investor> findByRucInvestor(String ruc);
 }

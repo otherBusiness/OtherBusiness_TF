@@ -49,7 +49,7 @@ public class InvestorServiceImpl implements IInvestorService{
 	}
 
 	@Override
-	public List<Investor> findRucInvestor(int rucInvestor) {
+	public List<Investor> findRucInvestor(String rucInvestor) {
 		// TODO Auto-generated method stub
 		return iR.findByRucInvestor(rucInvestor);
 	}

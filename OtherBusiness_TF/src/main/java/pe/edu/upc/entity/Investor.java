@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "investors")
@@ -29,9 +30,9 @@ public class Investor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idInvestor;
 	
-	@NotNull(message="El ruc es obligatorio")
+	@NotEmpty(message="El ruc es obligatorio")
 	@Column(name = "rucInvestor", nullable = false, length = 11)
-	private int rucInvestor;
+	private String rucInvestor;
 	
 	@ManyToOne
 	@JoinColumn(name = "idCountry")
@@ -57,7 +58,7 @@ public class Investor implements Serializable{
 
 	
 
-	public Investor(int idInvestor, int rucInvestor, Country country, String districtInvestor,String emailInvestor,
+	public Investor(int idInvestor, String rucInvestor, Country country, String districtInvestor,String emailInvestor,
 			Customer customer) {
 		super();
 		this.idInvestor = idInvestor;
@@ -78,11 +79,11 @@ public class Investor implements Serializable{
 		this.idInvestor = idInvestor;
 	}
 
-	public int getRucInvestor() {
+	public String getRucInvestor() {
 		return rucInvestor;
 	}
 
-	public void setRucInvestor(int rucInvestor) {
+	public void setRucInvestor(String rucInvestor) {
 		this.rucInvestor = rucInvestor;
 	}
 
