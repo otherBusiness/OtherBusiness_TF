@@ -161,19 +161,36 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
+								<th scope="col">Nombres</th>
+								<th scope="col">Apellidos</th>
+								<th scope="col">DNI</th>
+								<th scope="col">Celular</th>
 								<th scope="col">RUC</th>
 								<th scope="col">Pais</th>
 								<th scope="col">Distrito</th>
-								<th scope="col">email</th>
+								<th scope="col">Email</th>
+								<th scope="col">Eliminar</th>
+								<th scope="col">Actualizar</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="inv: ${listInvestors}">
 								<td th:text="${inv.idInvestor}"></td>
+								<td th:text="${inv.customer.firstNameCustomer}"></td>
+								<td th:text="${inv.customer.lastNameCustomer}"></td>
+								<td th:text="${inv.customer.dniCustomer}"></td>
+								<td th:text="${inv.customer.phoneCustomer}"></td>
 								<td th:text="${inv.rucInvestor}"></td>
 								<td th:text="${inv.countryInvestor}"></td>
 								<td th:text="${inv.districtInvestor}"></td>
 								<td th:text="${inv.emailInvestor}"></td>
+								<td><a
+									th:href="@{'/investors/delete/'+${inv.idInvestor}}"> <i
+										class="iconf fa fa-trash" style="color: red"></i>
+								</a></td>
+								<td><a th:href="@{'/investors/irupdate/'+${inv.idInvestor}}">
+										<i class="iconf fa fa-pen" style="color: red"></i>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>
