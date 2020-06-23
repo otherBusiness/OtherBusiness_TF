@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "customers")
@@ -30,18 +29,18 @@ public class Customer implements Serializable{
 	private String lastNameCustomer;
 	
 	@Column (name = "dniCustomer", nullable = false, length = 8)
-	private int dniCustomer;
+	private String dniCustomer;
 	
 	@Column(name = "phoneCustomer", nullable = false, length = 9)
-	private int phoneCustomer;
+	private String phoneCustomer;
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(int idCustomer, String firstNameCustomer, String lastNameCustomer, int dniCustomer,
-			int phoneCustomer) {
+	public Customer(int idCustomer, String firstNameCustomer, String lastNameCustomer, String dniCustomer,
+			String phoneCustomer) {
 		super();
 		this.idCustomer = idCustomer;
 		this.firstNameCustomer = firstNameCustomer;
@@ -74,19 +73,19 @@ public class Customer implements Serializable{
 		this.lastNameCustomer = lastNameCustomer;
 	}
 
-	public int getDniCustomer() {
+	public String getDniCustomer() {
 		return dniCustomer;
 	}
 
-	public void setDniCustomer(int dniCustomer) {
+	public void setDniCustomer(String dniCustomer) {
 		this.dniCustomer = dniCustomer;
 	}
 
-	public int getPhoneCustomer() {
+	public String getPhoneCustomer() {
 		return phoneCustomer;
 	}
 
-	public void setPhoneCustomer(int phoneCustomer) {
+	public void setPhoneCustomer(String phoneCustomer) {
 		this.phoneCustomer = phoneCustomer;
 	}
 }
