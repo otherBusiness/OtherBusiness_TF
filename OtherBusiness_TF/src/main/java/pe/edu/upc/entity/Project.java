@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
-
+import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -43,6 +43,7 @@ public class Project implements Serializable{
 	
 	/*@NotNull(message="El costo es obligatorio")*/
 	@Column(name = "costProject", nullable = false)
+	/*@Positive(message = "El costo debe de ser positivo")*/
 	private double costProject;
 	
 	/*@NotNull(message="Inicio de fecha es obligatorio")*/

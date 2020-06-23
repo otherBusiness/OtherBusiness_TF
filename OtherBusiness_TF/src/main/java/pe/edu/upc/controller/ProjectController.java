@@ -101,17 +101,23 @@ public class ProjectController {
     @RequestMapping("/delete/{id}")
     public String deleteProject(Model model, @PathVariable(value="id")int id) {
         try {
-            if(id>0) {pS.delete(id);
-    }
+            if(id>0) {
+           pS.delete(id);
+    
             model.addAttribute("listProjects",pS.list());
-            
+            model.addAttribute("project", new Project());
             model.addAttribute("mensaje","Se elimino el proyecto");
+            }
+            
+			return "project/listProjects";
+			
         }catch(Exception e) {
             System.out.println(e.getMessage());
         model.addAttribute("mensaje","Ocurrio error al eliminar");
         model.addAttribute("listProjects",pS.list());
-        }
+        
         return "project/listProjects";
+    }
     }
     
     @RequestMapping("/irupdate/{id}")
