@@ -18,7 +18,6 @@ public class StudentServiceImpl implements IStudentService{
 	@Autowired
 	private IStudentRepository sR;
 	
-	
 	@Transactional
 	@Override
 	public int insert(Student student) {
@@ -46,6 +45,7 @@ public class StudentServiceImpl implements IStudentService{
 		// TODO Auto-generated method stub
 		return sR.findById(idStudent);
 	}
+
 	@Override
 	public List<Student> findEmailStudent(String emailStudent) {
 		return sR.findByemailStudent(emailStudent);

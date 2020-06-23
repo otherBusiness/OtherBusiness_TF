@@ -136,6 +136,7 @@
 							</div></li>
 
 					</ul>
+
 				</nav>
 				<!-- End of Topbar -->
 
@@ -156,7 +157,7 @@
 					<form th:action="@{/students/save}" th:object="${student}"
 						method="post">
 						<div class="form-group row">
-							<label for="id" class="col-sm-2 col-form-label">Id</label>
+							<label for="idStudent" class="col-sm-2 col-form-label">Id</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{idStudent}"
 									class="form-control"
@@ -166,57 +167,62 @@
 									th:errors="*{idStudent}"></small>
 							</div>
 						</div>
+						
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Nombres</label>
+							<label for="customer.firstNameCustomer" class="col-sm-2 col-form-label">Nombres</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.firstNameCustomer}"
-									class="form-control"
+									class="form-control" required placeholder="Nombre completo"
+									pattern="[A-Za-z]*" title="El nombre solo acepta letras y debe estar junto"
 									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Apellidos</label>
+							<label for="customer.lastNameCustomer" class="col-sm-2 col-form-label">Apellidos</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.lastNameCustomer}"
-									class="form-control"
+									class="form-control"  required placeholder="Apellido completo"
+									pattern="[A-Za-z]*" title="El Apellido solo acepta letras y debe estar junto"
 									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">DNI</label>
+							<label for="customer.dniCustomer" class="col-sm-2 col-form-label">DNI</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.dniCustomer}"
-									class="form-control"
+									class="form-control"  required placeholder="DNI"
+									pattern="[0-9]*" min=8 max=8 title="El DNI solo acepta numeros de 8 digitos"
 									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Celular</label>
+							<label for="customer.phoneCustomer" class="col-sm-2 col-form-label">Celular</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.phoneCustomer}"
-									class="form-control"
+									class="form-control"  required placeholder="Telefono/Celular"
+									pattern="[0-9]*" min=9 max=9 title="El Telefono/Celular solo acepta numeros de 9 digitos"
 									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Email</label>
+							<label for="emailStudent" class="col-sm-2 col-form-label">Email</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{emailStudent}"
 									class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
+									class="form-text text-danger" placeholder="Email-Cambiar al actualizar"
 									th:if="${#fields.hasErrors('emailStudent')}"
 									th:errors="*{emailStudent}"></small>
 							</div>
 						</div>
 						<div class="form-group row">
 
-							<label for="quantity" class="col-sm-2 col-form-label">Codigo Estudiante</label>
+							<label for="codeStudent" class="col-sm-2 col-form-label">Codigo</label>
 							<div class="col-sm-6">
-								<input type="number" th:field="*{codeStudent}"
+								<input type="text" th:field="*{codeStudent}"
 									class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
+									class="form-text text-danger" placeholder="Codigo Estudiante"
 									th:if="${#fields.hasErrors('codeStudent')}"
 									th:errors="*{codeStudent}"></small>
 							</div>
