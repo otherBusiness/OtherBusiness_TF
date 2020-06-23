@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
+//import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -28,7 +29,7 @@ public class Student implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idStudent;
 	
-	@Email(message="No cuenta con el formato email")
+	//@Email(message="No cuenta con el formato email")
 	@NotEmpty(message="El email es obligatorio")
 	@Column(name = "emailStudent", nullable = false, length = 25)
 	private String emailStudent;
@@ -37,7 +38,7 @@ public class Student implements Serializable{
 	@Column(name = "codeStudent", nullable = false, unique = true, length = 9)
 	private int codeStudent;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idCustomer")
 	private Customer customer;
 

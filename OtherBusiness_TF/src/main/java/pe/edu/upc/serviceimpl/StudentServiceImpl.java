@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -32,5 +33,21 @@ public class StudentServiceImpl implements IStudentService{
 		return sR.findAll();
 	}
 
-	
+	@Transactional
+	@Override
+	public void delete(int idStudent) {
+		// TODO Auto-generated method stub
+		sR.deleteById(idStudent);
+	}
+
+	@Override
+	public Optional<Student> searchId(int idStudent) {
+		// TODO Auto-generated method stub
+		return sR.findById(idStudent);
+	}
+
+	@Override
+	public List<Student> findEmailStudent(String emailStudent) {
+		return sR.findByemailStudent(emailStudent);
+	}
 }

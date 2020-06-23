@@ -158,7 +158,7 @@
 					<h1 class="h3 mb-4 text-gray-800">Estudiantes</h1>
 
 					<a th:href="@{/students/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
-
+					
 					<hr class="sidebar-divider">
 
 					<table class="table table-striped">
@@ -167,9 +167,10 @@
 								<th scope="col">Id</th>
 								<th scope="col">Email</th>
 								<th scope="col">Codigo de Alumno</th>
+								<th scope="col">DNI</th>
 								<th scope="col">Campus</th>
-
-
+								<th scope="col">Operacion</th>
+								<th scope="col">Operacion</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -177,7 +178,15 @@
 								<td th:text="${p.idStudent}"></td>
 								<td th:text="${p.emailStudent}"></td>
 								<td th:text="${p.codeStudent}"></td>
+								<td th:text="${p.customer.dniCustomer}"></td>
 								<td th:text="${p.campus.nameCampus}"></td>
+								<td><a
+									th:href="@{'/students/delete/'+${p.idStudent}}"> <i
+										class="iconf fa fa-trash" style="color: red"></i>
+								</a></td>
+								<td><a th:href="@{'/students/irupdate/'+${p.idStudent}}">
+										<i class="iconf fa fa-pen" style="color: red"></i>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>
