@@ -165,17 +165,21 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
+								<th scope="col">Nombres</th>
+								<th scope="col">Apellidos</th>
 								<th scope="col">Email</th>
 								<th scope="col">Codigo de Alumno</th>
 								<th scope="col">DNI</th>
 								<th scope="col">Campus</th>
-								<th scope="col">Eliminar</th>
-								<th scope="col">Actualizar</th>
+								<th scope="col">Operacion</th>
+								<th scope="col">Operacion</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="p: ${listStudents}">
 								<td th:text="${p.idStudent}"></td>
+								<td th:text="${p.customer.firstNameCustomer}"></td>
+								<td th:text="${p.customer.lastNameCustomer}"></td>
 								<td th:text="${p.emailStudent}"></td>
 								<td th:text="${p.codeStudent}"></td>
 								<td th:text="${p.customer.dniCustomer}"></td>
@@ -190,6 +194,7 @@
 							</tr>
 						</tbody>
 					</table>
+
 					<p th:text="${mensaje}" class="form-text text-success"></p>
 
 				</div>
