@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -30,6 +31,8 @@ public class Investor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idInvestor;
 	
+	@Positive
+	@Size(min = 11, max = 11)
 	@NotEmpty(message="El ruc es obligatorio")
 	@Column(name = "rucInvestor", nullable = false, length = 11)
 	private String rucInvestor;
@@ -56,7 +59,6 @@ public class Investor implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
 	public Investor(int idInvestor, String rucInvestor, Country country, String districtInvestor,String emailInvestor,
 			Customer customer) {
