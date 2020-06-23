@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.security.access.annotation.Secured;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,7 +23,7 @@ import pe.edu.upc.serviceinterface.IInvestorService;
 
 @Controller
 @RequestMapping("/investors")
-
+/*@Secured("ROLE_ADMIN")*/
 public class InvestorController {
 
 	@Autowired
@@ -31,7 +32,7 @@ public class InvestorController {
 	@Autowired
 	private ICountryService cS;
 	
-
+	/*@Secured("ROLE_INVERSIONISTA")*/
 	@GetMapping("/new")
 	public String newInvestor(Model model) {
 		model.addAttribute("listCountry", cS.list());
@@ -39,7 +40,7 @@ public class InvestorController {
 		return "investor/investor";
 	}
 	
-	
+	/*@Secured("ROLE_INVERSIONISTA")*/
 	@PostMapping("/save")
 	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
@@ -57,7 +58,7 @@ public class InvestorController {
 			}
 		}
 	}
-
+	/*@Secured({ "ROLE_INVERSIONISTA", "ROLE_ADMIN" })*/
 	@GetMapping("/list")
 	public String listaInvestors(Model model) {
 		try {
