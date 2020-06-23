@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import pe.edu.upc.serviceinterface.IStudentService;
 
 @Controller
 @RequestMapping("/students")
+@Secured("ROLE_ADMIN")
 public class StudentController {
 
 	@Autowired
@@ -30,6 +32,7 @@ public class StudentController {
 	@Autowired
 	private ICampusService cS;
 	
+	@Secured("ROLE_ESTUDIANTE")
 	@GetMapping("/new")
 	public String newStudent(Model model) {
 		model.addAttribute("listCampus", cS.list());
@@ -37,6 +40,7 @@ public class StudentController {
 		return "student/student";
 	}
 	
+	@Secured("ROLE_ESTUDIANTE")
 	@PostMapping("/save")
 	public String saveStudent(@Validated Student student, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {

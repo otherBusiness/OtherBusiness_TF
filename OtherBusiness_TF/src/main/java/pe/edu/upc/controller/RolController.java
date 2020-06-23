@@ -1,6 +1,7 @@
 package pe.edu.upc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 /*import org.springframework.security.access.annotation.Secured;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import pe.edu.upc.serviceinterface.IUserService;
 @Controller
 /*@Secured("ROLE_ADMIN")*/
 @RequestMapping("/roles")
+@Secured("ROLE_ADMIN")
 public class RolController {
 	
 	@Autowired
