@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +34,6 @@ import pe.edu.upc.serviceinterface.IStudentService;
 
 @Controller
 @RequestMapping("projects")
-@Secured({"ROLE_INVERSIONISTA","ROLE_ADMIN"})
 public class ProjectController {
     @Autowired
     private IProjectService pS;
@@ -49,7 +47,7 @@ public class ProjectController {
     @Autowired
     private IUploadFileService uploadFileService;
     
-    @Secured("ROLE_ESTUDIANTE")
+  
     @GetMapping("/new")
     public String newProject(Model model) {
         model.addAttribute("listCategories", cS.list());
@@ -101,7 +99,7 @@ public class ProjectController {
     }
     
     @RequestMapping("/delete/{id}")
-    @Secured("ROLE_ADMIN")
+ 
     public String deleteProject(Model model, @PathVariable(value="id")int id) {
         try {
             if(id>0) {
@@ -124,7 +122,7 @@ public class ProjectController {
     }
     
     @RequestMapping("/irupdate/{id}")
-    @Secured("ROLE_ADMIN")
+  
     public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
         Optional<Project> objPro=pS.searchId(id);
         if(objPro==null){
@@ -170,7 +168,7 @@ public class ProjectController {
                 .body(recurso);
     }
     
-    @Secured("ROLE_ESTUDIANTE")
+   
     @PostMapping("/save")
     public String saveProduct(@Valid Project project, BindingResult result, Model model,
             @RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status) throws Exception {
