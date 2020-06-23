@@ -24,7 +24,6 @@ import pe.edu.upc.serviceinterface.IStudentService;
 @RequestMapping("/students")
 public class StudentController {
 
-	
 	@Autowired
 	private IStudentService sS;
 	
@@ -98,7 +97,7 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping("/search")
+	@RequestMapping("/searchemail")
 	public String searchEmailStudents(Model model, @Validated Student student) throws ParseException{
 		List<Student> listStudents;
 		listStudents = sS.findEmailStudent(student.getEmailStudent());

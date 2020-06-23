@@ -18,6 +18,7 @@ public class StudentServiceImpl implements IStudentService{
 	@Autowired
 	private IStudentRepository sR;
 	
+	
 	@Transactional
 	@Override
 	public int insert(Student student) {

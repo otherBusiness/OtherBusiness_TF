@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "students")
 public class Student implements Serializable{
+	
 	/**
 	 * 
 	 */
