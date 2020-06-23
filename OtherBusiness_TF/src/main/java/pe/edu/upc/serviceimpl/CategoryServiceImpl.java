@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -32,6 +33,24 @@ public class CategoryServiceImpl implements ICategoryService{
 	public List<Category> list() {
 		// TODO Auto-generated method stub
 		return cR.findAll();
+	}
+
+	@Override
+	public void delete(int idProject) {
+		// TODO Auto-generated method stub
+		cR.deleteById(idProject);
+	}
+
+	@Override
+	public Optional<Category> searchId(int idCategory) {
+		// TODO Auto-generated method stub
+		return cR.findById(idCategory);
+	}
+
+	@Override
+	public List<Category> findNameCategoryFull(String nameCategory) {
+		// TODO Auto-generated method stub
+		return cR.findBynameCategory(nameCategory);
 	}
 
 }

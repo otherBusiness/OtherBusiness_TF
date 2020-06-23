@@ -1,5 +1,7 @@
 package pe.edu.upc.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,4 +13,6 @@ import pe.edu.upc.entity.Category;
 public interface ICategoryRepository extends JpaRepository<Category, Integer> {
 	@Query("select count (c.nameCategory) from Category c where c.nameCategory= LOWER(:nameCategory) or c.nameCategory=UPPER(:nameCategory)")
 	public int searchCategory(@Param("nameCategory") String nombre);
+
+	List<Category> findBynameCategory(String nameCategory);
 }
