@@ -37,18 +37,16 @@ public class Investor implements Serializable{
 	@Column(name = "rucInvestor", nullable = false, length = 11)
 	private String rucInvestor;
 	
-	@ManyToOne
-	@JoinColumn(name = "idCountry")
-	private Country country;
-	
-	@NotEmpty(message = "El distrito es obligatorio")
 	@Column(name = "districtInvestor", nullable = false, length = 25)
 	private String districtInvestor;
 	
 	@Email(message = "El email no cuenta con el formato")
-	@NotEmpty(message = "El email es obligatorio")
 	@Column(name = "emailInvestor", nullable = false, length = 50)
 	private String emailInvestor;
+	
+	@ManyToOne
+	@JoinColumn(name = "idCountry")
+	private Country country;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idCustomer")
