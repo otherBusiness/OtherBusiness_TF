@@ -6,7 +6,6 @@ import java.util.Optional;
 import pe.edu.upc.entity.Student;
 
 public interface IStudentService {
-
 	public int insert(Student student);
 
 	List<Student> list();
