@@ -174,7 +174,7 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="customer.firstNameCustomer" class="col-sm-2 col-form-label">Nombres</label>
+							<label for="customer.firstNameCustomer" class="col-sm-2 col-form-label">Nombres: </label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.firstNameCustomer}"
 									class="form-control" required placeholder="Nombre completo"
@@ -183,7 +183,7 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="customer.lastNameCustomer" class="col-sm-2 col-form-label">Apellidos</label>
+							<label for="customer.lastNameCustomer" class="col-sm-2 col-form-label">Apellidos: </label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.lastNameCustomer}"
 									class="form-control"  required placeholder="Apellido completo"
@@ -192,7 +192,7 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="customer.dniCustomer" class="col-sm-2 col-form-label">DNI</label>
+							<label for="customer.dniCustomer" class="col-sm-2 col-form-label">DNI: </label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.dniCustomer}"
 									class="form-control"  required placeholder="DNI"
@@ -201,7 +201,7 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="customer.phoneCustomer" class="col-sm-2 col-form-label">Celular</label>
+							<label for="customer.phoneCustomer" class="col-sm-2 col-form-label">Celular: </label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{customer.phoneCustomer}"
 									class="form-control"  required placeholder="Telefono/Celular"
@@ -223,7 +223,7 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="name.country">País:</label>
+							<label for="name.country">País: </label>
 							<div class="col-sm-6">
 								<select class="form-control" th:field="*{country.idCountry}">
 									<option th:each="c: ${listCountry}" 
@@ -234,21 +234,7 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="districtInvestor" class="col-sm-2 col-form-label">Distrito:
-							</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{districtInvestor}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('districtInvestor')}"
-									th:errors="*{districtInvestor}"></small>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="emailInvestor" class="col-sm-2 col-form-label">Email:
-							</label>
+							<label for="emailInvestor" class="col-sm-2 col-form-label">Email: </label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{emailInvestor}"
 									class="form-control"

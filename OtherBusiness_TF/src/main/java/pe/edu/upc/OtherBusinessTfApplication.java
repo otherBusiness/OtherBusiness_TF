@@ -25,7 +25,7 @@ public class OtherBusinessTfApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		String password = "otherbusiness";
+		String password = "admin";
 
 		for (int i = 0; i < 1; i++) {
 			String bcryptPassword = passwordEncoder.encode(password);
