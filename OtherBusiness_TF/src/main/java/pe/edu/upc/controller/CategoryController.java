@@ -73,6 +73,8 @@ public class CategoryController {
 				model.addAttribute("category", new Category());
 				model.addAttribute("mensaje", "Categoría Eliminada");
 
+				
+				
 			}
 			return "category/listCategories";
 
