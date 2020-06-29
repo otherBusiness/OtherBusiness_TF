@@ -45,6 +45,8 @@ public class CampusController {
 				model.addAttribute("mensaje", "Ya existe el Campus, intente otra vez");
 				return "campus/campus";
 			} else { model.addAttribute("listCampus",cS.list());
+			model.addAttribute("mensaje", "Se guardó correctamente");
+
 			return "campus/listCampus";
 			}
 
@@ -93,7 +95,7 @@ public class CampusController {
 			model.addAttribute("listCampus",cS.list());
 			model.addAttribute("campus",objCamp.get());
 			model.addAttribute("mensaje","Guardar para actualizar");
-
+			model.addAttribute("mensaje1", "Se guardó correctamente");
 			return "campus/campus";
 		}
 								

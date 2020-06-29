@@ -39,12 +39,15 @@ public class CategoryController {
 		if(result.hasErrors()) {
 			return "category/category";
 		}else {
-			int rpta=cS.insert(category);
+			int rpta=cS.insert(category);//model.addAttribute("success", "Orden Generada");
 			if(rpta>0) {
 				model.addAttribute("mensaje","Ya existe la Categoría");
 				return "category/category";
 			}else {
 				model.addAttribute("listCategories",cS.list());
+				//model.addAttribute("success", "Orden Generada");
+				model.addAttribute("mensaje", "Se guardó correctamente");
+
 				return "category/listCategories";
 			}
 		}
@@ -90,14 +93,28 @@ public class CategoryController {
 		Optional<Category> objCate=cS.searchId(id);
 			if(objCate==null) {
 			objRedir.addFlashAttribute("mensaje","ocurrio un error");
+
 			return "redirect:/categories/list";
-		}else {
+		}else {		//
+			//model.addAttribute("mensaje","Actualizado");//(model,"xdxd");//("mensaje","xdxdxdxdlistooor");
+
 			model.addAttribute("listCategories",cS.list());
 			model.addAttribute("category",objCate.get());
 			model.addAttribute("mensaje","Guardar para actualizar");
+		String p="exito";
+	
+			model.addAttribute("mensaje1", "Se guardó correctamente");//.addFlashAttribute("mensaje",p);
+		//	objRedir.addFlashAttribute("mensaje", "OcurriÃ³Â³ un error222");
+		        System.out.println(p);
 
+			
+		//	model.addAttribute("category", "Categoría Eliminada2222222222");  //para el mensaje cuando se modifica
+			//objRedir.addFlashAttribute("error", "El valor debe ser positivo");  //para el mensaje cuando se modifica
+
+			
 			return "category/category";
 			}
+
 		}
 	
 	@RequestMapping("/search")
