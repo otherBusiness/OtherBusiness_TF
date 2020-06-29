@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.security.access.annotation.Secured;*/
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +23,7 @@ import pe.edu.upc.serviceinterface.IInvestorService;
 
 @Controller
 @RequestMapping("/investors")
-/*@Secured("ROLE_ADMIN")*/
+@Secured("ROLE_ADMIN")
 public class InvestorController {
 
 	@Autowired

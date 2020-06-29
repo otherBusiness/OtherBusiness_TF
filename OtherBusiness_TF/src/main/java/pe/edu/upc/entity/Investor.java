@@ -36,9 +36,6 @@ public class Investor implements Serializable{
 	@Column(name = "rucInvestor", nullable = false, length = 11)
 	private String rucInvestor;
 	
-	@Column(name = "districtInvestor", nullable = false, length = 25)
-	private String districtInvestor;
-	
 	@Email(message = "El email no cuenta con el formato")
 	@Column(name = "emailInvestor", nullable = false, length = 50)
 	private String emailInvestor;
@@ -56,19 +53,15 @@ public class Investor implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Investor(int idInvestor, String rucInvestor, Country country, String districtInvestor,String emailInvestor,
+	public Investor(int idInvestor, String rucInvestor, Country country,String emailInvestor,
 			Customer customer) {
 		super();
 		this.idInvestor = idInvestor;
 		this.rucInvestor = rucInvestor;
 		this.country = country;
-		this.districtInvestor = districtInvestor;
 		this.emailInvestor = emailInvestor;
 		this.customer = customer;
 	}
-
-
 
 	public int getIdInvestor() {
 		return idInvestor;
@@ -96,16 +89,6 @@ public class Investor implements Serializable{
 
 	public void setCountry(Country country) {
 		this.country = country;
-	}
-
-
-
-	public String getDistrictInvestor() {
-		return districtInvestor;
-	}
-
-	public void setDistrictInvestor(String districtInvestor) {
-		this.districtInvestor = districtInvestor;
 	}
 
 	public String getEmailInvestor() {
