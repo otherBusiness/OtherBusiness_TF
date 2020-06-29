@@ -12,10 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "students")
@@ -30,15 +26,10 @@ public class Student implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idStudent;
 	
-	@NotEmpty(message = "Ingrese el email del estudiante")
 	@Column(name = "emailStudent", nullable = false, length = 25)
 	private String emailStudent;
 	
-	@Positive(message="No puede ser negativo")
-	@NotEmpty(message = "Ingrese el codigo del estudiante")
-	@Size(min = 9, max = 9)
 	@Column(name = "codeStudent", nullable = false, unique = true, length = 9)
-	@Pattern(regexp = "[0-9]*", message="El campo solo puede tener numeros.")
 	private String codeStudent;
 	
 	@OneToOne(cascade = CascadeType.ALL)

@@ -12,10 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "investors")
@@ -30,13 +26,9 @@ public class Investor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idInvestor;
 	
-	@Positive
-	@Size(min = 11, max = 11)
-	@NotEmpty(message="El ruc es obligatorio")
 	@Column(name = "rucInvestor", nullable = false, length = 11)
 	private String rucInvestor;
 	
-	@Email(message = "El email no cuenta con el formato")
 	@Column(name = "emailInvestor", nullable = false, length = 50)
 	private String emailInvestor;
 	
