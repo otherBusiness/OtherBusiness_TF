@@ -40,9 +40,22 @@ public class StudentController {
 		return "student/student";
 	}
 	
+	/*@Secured({ "ROLE_ADMIN","ROLE_ESTUDIANTE"})*/
+	@GetMapping("/list")
+	public String listStudents(Model model) {
+		try {
+			model.addAttribute("student", new Student());
+			model.addAttribute("listStudents", sS.list());
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+		//	model.addAttribute("mensaje1", "Estudiante Registrado");
+		}
+		return "student/listStudents";
+	}
+	
 	/*@Secured("ROLE_ESTUDIANTE")*/
 	@PostMapping("/save")
-	public String saveStudent(@Validated Student student, BindingResult result, Model model) throws Exception{
+	public String saveStudent(@Validated Student student, BindingResult result, Model model,RedirectAttributes flash) throws Exception{
 		if(result.hasErrors()) {
 			model.addAttribute("listCampus", cS.list());
 			return "student/student";
@@ -53,24 +66,18 @@ public class StudentController {
 				model.addAttribute("listCampus",cS.list());
 				return "student/student";
 			}else {
-				model.addAttribute("mensaje", "Estudiante Registrado");
-				model.addAttribute("listStudent",cS.list());
+				//model.addAttribute("mensaje", "Estudiante Registrado");
+				model.addAttribute("listStudent",sS.list());//
+				flash.addFlashAttribute("mensaje", "¡Guardado Correctamente!");
+			//	flash.addFlashAttribute("mensaje2", "¡Guardado Correctamente!2");
+
 				return "redirect:/students/list"; 
+				//return "student/listStudents";
 			}
 			
 		}
 	}
-	/*@Secured({ "ROLE_ADMIN","ROLE_ESTUDIANTE"})*/
-	@GetMapping("/list")
-	public String listStudents(Model model) {
-		try {
-			model.addAttribute("student", new Student());
-			model.addAttribute("listStudents", sS.list());
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-		}
-		return "student/listStudents";
-	}
+
 	
 	@GetMapping("/delete/{id}")
 	public String deleteStudent(Model model, @PathVariable(value = "id")int id) {
@@ -97,6 +104,8 @@ public class StudentController {
 		} else {
 			model.addAttribute("listCampus", cS.list());
 			model.addAttribute("student", objStu.get());
+			objRedir.addFlashAttribute("mensaje", "¡Guardado Correctamente!");
+
 			return "student/student";
 		}
 	}
