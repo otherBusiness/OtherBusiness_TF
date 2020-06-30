@@ -28,7 +28,6 @@ public class StudentController {
 
 	@Autowired
 	private IStudentService sS;
-	
 	@Autowired
 	private ICampusService cS;
 	/*@Secured("ROLE_ESTUDIANTE")*/
