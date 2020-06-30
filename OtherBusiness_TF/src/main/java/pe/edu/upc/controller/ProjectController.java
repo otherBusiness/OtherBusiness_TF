@@ -202,10 +202,12 @@ public class ProjectController {
                 model.addAttribute("listStudents",sS.list());
                 return "project/project";
             } else {
-                model.addAttribute("mensaje", "Se guardó correctamente");
+                //model.addAttribute("mensaje", "Se guardó correctamente");
                 status.setComplete();
             }
         }
+        
+        flash.addFlashAttribute("mensaje", "El registro de su proyecto fue exitoso");
         model.addAttribute("listaProjects", pS.list());
 
         return "redirect:/projects/list";
