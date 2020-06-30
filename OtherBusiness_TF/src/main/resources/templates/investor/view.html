@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>OtherBusiness</title>
+<title>2020</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -37,14 +37,11 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/categories/list}">
-				<div class="sidebar-brand-icon">
-					<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-									th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-									align="middle"></img></span>
+				th:href="@{/investors/list}">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-leaf"></i>
 				</div>
-
+				<div class="sidebar-brand-text mx-2">Programación en web</div>
 			</a>
 
 			<!-- Divider -->
@@ -61,7 +58,7 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/categories/list}">Categorías</a>
+						<a class="collapse-item" th:href="@{/investors/list}">Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/campus/list}">Campus</a>
@@ -79,14 +76,9 @@
 						<a class="collapse-item" th:href="@{/users/list}">Usuarios</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/invprojects/list}">Inversiones</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/invprojects/reports}">Reportes</a>
+						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
 				</div></li>
-
-
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -144,7 +136,7 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="categories/index"
+								<a class="dropdown-item" href="investors/index"
 									data-toggle="modal" data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
@@ -155,96 +147,82 @@
 
 				</nav>
 				<!-- End of Topbar -->
+				<div class="container">
+					<div class="card">
+						<div class="card-header text-white bg-dark mb-3">Perfil de inverionista </div>
+						<div class="card-body">
 
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
+							<div class="table-responsive">
+								<table class="table table-white">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Inversionistas</h1>
+									<tbody>
+										<tr>
+											<td>CODIGO</td>
+											<td th:text="${investor.idInvestor}"></td>
+										</tr>
+										<tr>
+											<td>Nombres: </td>
+											<td th:text="${investor.customer.firstNameCustomer}"></td>
+										</tr>
+										<tr>
+											<td>Apellidos: </td>
+											<td th:text="${investor.customer.lastNameCustomer}"></td>
+										</tr>
+										<tr>
+											<td>DNI: </td>
+											<td th:text="${investor.customer.dniCustomer}"></td>
+										</tr>
 
-					<a th:href="@{/investors/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
-					
-					<form th:action="@{/investors/searchruc}" method="post"
-						th:object="${investor}">
-						<div class="form-group">
-							<table>
-								<tbody>
-									<tr>
-										<td><label for="rucInvestor"
-											class="col-sm-2 col-form-label">Buscar:</label></td>
-										<td><input type="text" class="form-control"
-											th:field="*{rucInvestor}" id="rucInvestor"
-											placeholder="RUC de Inversionista" required="required"></input></td>
-										<td><button type="submit" class="btn btn-danger">
-												<i class="iconf fa fa-search" style="color: white;"></i>
-											</button></td>
-										<td><a href="/investors/list" class="btn btn-danger">Limpiar</a></td>
-									</tr>
-								</tbody>
-							</table>
+										<tr>
+											<td>Celular: </td>
+											<td th:text="${investor.customer.phoneCustomer}"></td>
+										</tr>
+
+										<tr>
+											<td>RUC:</td>
+											<td th:text="${investor.rucInvestor}"></td>
+										</tr>
+
+
+										<tr>
+											<td>Email: </td>
+											<td th:text="${investor.emailInvestor}"></td>
+										</tr>
+
+										<tr>
+											<td>Pais: </td>
+											<td th:text="${investor.country.nameCountry}"></td>
+										</tr>
+									</tbody>
+
+								</table>
+
+								<a th:href="@{/investors/list}" type="button"
+									class="btn btn-danger k"> <span
+									class="glyphicon glyphicon-circle-arrow-left"></span> Volver
+								</a>
+							</div>
 						</div>
-					</form>
-					
-					<hr class="sidebar-divider">
-
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombres</th>
-								<th scope="col">Apellidos</th>
-								<th scope="col">DNI</th>
-								<th scope="col">Celular</th>
-								<th scope="col">RUC</th>
-								<th scope="col">País</th>
-								<th scope="col">Email</th>
-								<th scope="col">Eliminar</th>
-								<th scope="col">Actualizar</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="inv: ${listInvestors}">
-								<td><a class="btn btn-danger btn-xs"
-									th:href="@{/investors/view/} + ${inv.idInvestor}"
-									th:text="${inv.idInvestor}"></a></td>
-								<td th:text="${inv.customer.firstNameCustomer}"></td>
-								<td th:text="${inv.customer.lastNameCustomer}"></td>
-								<td th:text="${inv.customer.dniCustomer}"></td>
-								<td th:text="${inv.customer.phoneCustomer}"></td>
-								<td th:text="${inv.rucInvestor}"></td>
-								<td th:text="${inv.country.nameCountry}"></td>
-								<td th:text="${inv.emailInvestor}"></td>
-								<td><a
-									th:href="@{'/investors/delete/'+${inv.idInvestor}}"> <i
-										class="iconf fa fa-trash" style="color: red"></i>
-								</a></td>
-								<td><a th:href="@{'/investors/irupdate/'+${inv.idInvestor}}">
-										<i class="iconf fa fa-pen" style="color: red"></i>
-								</a></td>
-							</tr>
-						</tbody>
-					</table>
-
-					<p th:text="${mensaje}" class="form-text text-success"></p>
-
-				</div>
-				<!-- /.container-fluid -->
-
-			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Web 2020</span>
 					</div>
 				</div>
-			</footer>
-			<!-- End of Footer -->
+			</div>
+			<!-- /.container-fluid -->
 
 		</div>
-		<!-- End of Content Wrapper -->
+		<!-- End of Main Content -->
+
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy; Web 2020</span>
+				</div>
+			</div>
+		</footer>
+		<!-- End of Footer -->
+
+	</div>
+	<!-- End of Content Wrapper -->
 
 	</div>
 	<!-- End of Page Wrapper -->
@@ -273,10 +251,10 @@
 					<form id="logoutForm" th:action="@{/logout}" method="post">
 						<button class="btn btn-danger"
 							onclick="document.getElementById('logoutForm').submit();"
-							type="submit">Cerrar sesión</button>
+							type="submit">Cerrar</button>
 						<button class="btn btn-dark" type="button" data-dismiss="modal"
 							th:href="@{/investors/list}">Cancel</button>
-					</form>	
+					</form>
 				</div>
 			</div>
 		</div>

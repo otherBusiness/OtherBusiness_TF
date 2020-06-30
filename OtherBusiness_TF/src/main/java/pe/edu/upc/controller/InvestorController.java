@@ -28,19 +28,19 @@ public class InvestorController {
 
 	@Autowired
 	private IInvestorService iS;
-	
+
 	@Autowired
 	private ICountryService cS;
-	
-	/*@Secured("ROLE_INVERSIONISTA")*/
+
+	/* @Secured("ROLE_INVERSIONISTA") */
 	@GetMapping("/new")
 	public String newInvestor(Model model) {
 		model.addAttribute("listCountry", cS.list());
 		model.addAttribute("investor", new Investor());
 		return "investor/investor";
 	}
-	
-	/*@Secured("ROLE_INVERSIONISTA")*/
+
+	/* @Secured("ROLE_INVERSIONISTA") */
 	@PostMapping("/save")
 	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
@@ -58,7 +58,8 @@ public class InvestorController {
 			}
 		}
 	}
-	/*@Secured({ "ROLE_INVERSIONISTA", "ROLE_ADMIN" })*/
+
+	/* @Secured({ "ROLE_INVERSIONISTA", "ROLE_ADMIN" }) */
 	@GetMapping("/list")
 	public String listaInvestors(Model model) {
 		try {
@@ -71,36 +72,30 @@ public class InvestorController {
 		return "investor/listInvestors";
 	}
 
-	/*@GetMapping("/delete/{id}")
-	public String deleteInvestor(Model model, @PathVariable(value = "id") int id) {
-		try {
-			if (id > 0) {
-				iS.delete(id);
-			}
-			model.addAttribute("listInvestors", iS.list());
-			model.addAttribute("mensaje", "Se elimino el inversionista");
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			model.addAttribute("mensaje", "Ocurrio un error al eliminar");
-			model.addAttribute("listInvestors", iS.list());
-		}
-		return "investor/listInvestors";
-	}*/
-	
-	
+	/*
+	 * @GetMapping("/delete/{id}") public String deleteInvestor(Model
+	 * model, @PathVariable(value = "id") int id) { try { if (id > 0) {
+	 * iS.delete(id); } model.addAttribute("listInvestors", iS.list());
+	 * model.addAttribute("mensaje", "Se elimino el inversionista"); } catch
+	 * (Exception e) { System.out.println(e.getMessage());
+	 * model.addAttribute("mensaje", "Ocurrio un error al eliminar");
+	 * model.addAttribute("listInvestors", iS.list()); } return
+	 * "investor/listInvestors"; }
+	 */
+
 	@RequestMapping("/delete/{id}")
 	public String deleteInvestor(Model model, @PathVariable(value = "id") int id) {
 		try {
 			if (id > 0) {
 				iS.delete(id);
-			
-			model.addAttribute("listInvestors", iS.list());
-			model.addAttribute("investor", new Investor());
-			model.addAttribute("mensaje", "Se elimino el inversionista");
+
+				model.addAttribute("listInvestors", iS.list());
+				model.addAttribute("investor", new Investor());
+				model.addAttribute("mensaje", "Se elimino el inversionista");
 			}
-			
+
 			return "investor/listInvestors";
-			
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			model.addAttribute("mensaje", "Ocurrio un error al eliminar");
@@ -108,8 +103,6 @@ public class InvestorController {
 		}
 		return "investor/listInvestors";
 	}
-	
-	
 
 	@RequestMapping("/irupdate/{id}")
 	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
@@ -123,15 +116,29 @@ public class InvestorController {
 			return "investor/investor";
 		}
 	}
-	
+
 	@RequestMapping("/searchruc")
-	public String searchRucInvestor(Model model, @Validated Investor investor) throws ParseException{
+	public String searchRucInvestor(Model model, @Validated Investor investor) throws ParseException {
 		List<Investor> listInvestors;
 		listInvestors = iS.findRucInvestor(investor.getRucInvestor());
-		if(listInvestors.isEmpty()) {
+		if (listInvestors.isEmpty()) {
 			model.addAttribute("mensaje", "no se encontro");
 		}
 		model.addAttribute("listInvestors", listInvestors);
 		return "investor/listInvestors";
+	}
+
+	@GetMapping(value = "/view/{id}")
+	public String ver(@PathVariable(value = "id") Integer id, Model model, RedirectAttributes flash) {
+
+		Optional<Investor> investor = iS.searchId(id);
+		if (investor == null) {
+			flash.addFlashAttribute("error", "El proyecto no existe en la base de datos");
+			return "redirect:/projects/list";
+		}
+
+		model.addAttribute("investor", investor.get());
+
+		return "investor/view";
 	}
 }
