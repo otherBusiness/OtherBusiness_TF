@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>OtherBusiness</title>
+<title>2020</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -33,30 +33,28 @@
 		<ul
 			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 			id="accordionSidebar">
-
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				th:href="@{/categories/list}">
-				<div class="sidebar-brand-icon">
-					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-						th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-						align="middle"></img></span>
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-leaf"></i>
 				</div>
+				<div class="sidebar-brand-text mx-2">Programación en Web</div>
 			</a>
-		
-		<!-- Divider -->
+
+			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
-
-
 
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded=true
+				data-target="#collapseTwo" aria-expanded="false"
 				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/categories/list}">Categorías</a>
@@ -83,11 +81,6 @@
 						<a class="collapse-item" th:href="@{/invprojects/reports}">Reportes</a>
 					</div>
 				</div></li>
-
-
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
 
 			<!-- Sidebar Toggler (Sidebar) -->
 
@@ -134,6 +127,7 @@
 								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
 									th:src="@{/img/logout.png}" width="30" height="30" alt="logo"
 									align="middle"></img></span>
+
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -142,8 +136,8 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="categories/index"
-									data-toggle="modal" data-target="#logoutModal"> <i
+								<a class="dropdown-item" href="#" data-toggle="modal"
+									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
 								</a>
@@ -153,107 +147,94 @@
 
 				</nav>
 				<!-- End of Topbar -->
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Categor&iacute;as</h1>
-
-					<a th:href="@{/categories/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
-
-					
-
-					<hr class="sidebar-divider">
-
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombre</th>
-								<th scope="col" class="text-center">Eliminar</th>
-								<th scope="col" class="text-center">Modificar</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cate: ${listCategories}">
-								<td th:text="${cate.idCategory}"></td>
-								<td th:text="${cate.nameCategory}"></td>
-								<td class="text-center"><a
-									th:href="@{'/categories/delete/'+${cate.idCategory}}"><i
-										class="iconf fa fa-trash" style="color: red;"></i></a></td>
-								<td class="text-center"><a
-									th:href="@{'/categories/irupdate/'+${cate.idCategory}}"><i
-										class="iconf fa fa-pen" style="color: red"></i> </a></td>
-							</tr>
-						</tbody>
-					</table>
-
-					<p th:text="${mensaje}" class="form-text text-success"></p>
-					<p th:text="${mensaje1}" class="form-text text-success"></p>
-
-				</div>
-				<!-- /.container-fluid -->
-
-			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Web 2020</span>
+				<div class="content container">
+					<div class="cinforeport">
+						<h3 class="title-content">Reportes</h3>
 					</div>
 				</div>
-			</footer>
-			<!-- End of Footer -->
+
+				<div class="bg row">
+
+
+					<div class="content container">
+						<div class="creportes d-flex justify-content-around">
+							<div class="cproyecto ">
+								<h3 class="tproyecto ">Proyectos por Importacion</h3>
+								<p class="dproyecto ">Lista de la cantidad de veces que un
+									proyecto fue importado</p>
+								<a class="lnikp " th:href="@{/projects/reporte1}">Ver
+									Reporte</a>
+							</div>
+							<div class="cproyecto ">
+								<h3 class="tproyecto ">Categorías más presencia en las
+									importaciones</h3>
+								<p class="dproyecto ">Lista de las categorías más demandadas</p>
+								<a class="lnikp " th:href="@{/categories/reporte2}">Ver
+									Reporte</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Copyright &copy; Web 2020</span>
+						</div>
+					</div>
+				</footer>
+				<!-- End of Footer -->
+
+			</div>
+			<!-- End of Content Wrapper -->
 
 		</div>
-		<!-- End of Content Wrapper -->
+		<!-- End of Page Wrapper -->
 
-	</div>
-	<!-- End of Page Wrapper -->
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
 
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fas fa-angle-up"></i>
-	</a>
-
-	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">¿Listo para
-						salir?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Seleccione "Cerrar sesión" a
-					continuación si está listo para finalizar su sesión actual.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/categories/index}">Cerrar
-						sesión</a>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">¿Listo para
+							salir?</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Seleccione "Cerrar sesión" a
+						continuación si está listo para finalizar su sesión actual</div>
+					<div class="modal-footer">
+						<form id="logoutForm" th:action="@{/logout}" method="post">
+							<button class="btn btn-danger"
+								onclick="document.getElementById('logoutForm').submit();"
+								type="submit">Cerrar</button>
+							<button class="btn btn-dark" type="button" data-dismiss="modal"
+								th:href="@{/categories/list}">Cancel</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="/vendor/jquery/jquery.min.js"></script>
-	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Bootstrap core JavaScript-->
+		<script src="/vendor/jquery/jquery.min.js"></script>
+		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core plugin JavaScript-->
-	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-	<!-- Custom scripts for all pages-->
-	<script src="/js/sb-admin-2.min.js"></script>
-
+		<!-- Custom scripts for all pages-->
+		<script src="/js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

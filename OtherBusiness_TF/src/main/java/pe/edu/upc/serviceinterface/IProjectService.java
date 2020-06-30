@@ -16,4 +16,7 @@ Optional<Project> searchId(int idProject);
 
 
 public List<Project> search(String busqueda);
+
+public List<String[]> motin();
+
 }

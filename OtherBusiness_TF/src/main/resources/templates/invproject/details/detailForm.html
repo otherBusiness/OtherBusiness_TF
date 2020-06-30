@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>OtherBusiness</title>
+<title>2020</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -37,12 +37,10 @@
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				th:href="@{/categories/list}">
-				<div class="sidebar-brand-icon">
-					<span class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-						th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-						align="middle"></img></span>
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-leaf"></i>
 				</div>
-
+				<div class="sidebar-brand-text mx-2">Programación en Web</div>
 			</a>
 
 			<!-- Divider -->
@@ -147,132 +145,67 @@
 
 				</nav>
 				<!-- End of Topbar -->
+				<h3 class="title-content">Agregar proyecto a importar</h3>
 
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
+				<div class="card">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Inversionista</h1>
+					<div class="card-body">
 
-					<hr class="sidebar-divider">
-					<div th:object="${investor}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
+
+						<form
+							th:action="@{'/invprojects/saveproject'+${investorproject.idInvestorProject}}"
+							method="post" th:object="${detail}">
+							<div class="form-group row">
+								<label for="" class="col-sm-2 col-form-label">Proyecto:
+								</label>
+								<div class="col-sm-6">
+									<select class="form-control" th:field="*{project.idProject}">
+										<option th:each="p: ${listProjects}" th:value="${p.idProject}"
+											th:text="${p.nameProject}"
+											th:selected="(${p.idProject} == *{project.idProject})"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="amountInvested" class="col-sm-2 col-form-label">Monto invertido:</label>
+								<div class="col-sm-6">
+									<input type="number" required
+										th:errorclass="'form-control alert-danger'"
+										th:field="*{amountInvested}" class="form-control" id="amountInvested"></input>
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('amountInvested')}"
+										th:errors="*{amountInvested}"></div>
+
+									<div th:if="${error}" class="alert alert-danger">
+										<p th:text="${error}"></p>
+									</div>
+
+								</div>
+							</div>
+							
+							<button type="submit" class="btnadd btn btn-secondary">Agregar</button>
+							<a
+								th:href="@{'/invprojects/detail/' + ${investorproject.idInvestorProject}}"
+								class="btncancel btn btn-danger">Cancelar</a>
+						</form>
 					</div>
-
-					<form th:action="@{/investors/save}" th:object="${investor}"
-						method="post">
-
-						<div class="form-group row">
-							<label for="idInvestor" class="col-sm-2 col-form-label">Id</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{idInvestor}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('idInvestor')}"
-									th:errors="*{idInvestor}"></small>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="customer.firstNameCustomer" class="col-sm-2 col-form-label">Nombres: </label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{customer.firstNameCustomer}"
-									class="form-control" required placeholder="Nombre completo"
-									pattern="[A-Za-z]*" title="El nombre solo acepta letras y debe estar junto"
-									th:errorclass="'form-control alert-danger'" />
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="customer.lastNameCustomer" class="col-sm-2 col-form-label">Apellidos: </label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{customer.lastNameCustomer}"
-									class="form-control"  required placeholder="Apellido completo"
-									pattern="[A-Za-z]*" title="El Apellido solo acepta letras y debe estar junto"
-									th:errorclass="'form-control alert-danger'" />
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="customer.dniCustomer" class="col-sm-2 col-form-label">DNI: </label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{customer.dniCustomer}"
-									class="form-control"  required placeholder="DNI"
-									pattern="[0-9]*" minlength="8" maxlength="8" title="El DNI solo acepta numeros de 8 digitos"
-									th:errorclass="'form-control alert-danger'" />
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="customer.phoneCustomer" class="col-sm-2 col-form-label">Celular: </label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{customer.phoneCustomer}"
-									class="form-control"  required placeholder="Telefono/Celular"
-									pattern="[0-9]*" minlength="9" maxlength="9" title="El Celular solo acepta numeros de 9 digitos"
-									th:errorclass="'form-control alert-danger'" />
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="rucInvestor" class="col-sm-2 col-form-label">RUC: </label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{rucInvestor}"
-									class="form-control" required placeholder="RUC"
-									pattern="[0-9]*" minlength="11" maxlength="11" title="El RUC solo acepta numeros de 11 digitos"
-									th:errorclass="'form-control alert-danger'" />
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="name.country" class="col-sm-2 col-form-label">País: </label>
-							<div class="col-sm-6">
-								<select class="form-control" th:field="*{country.idCountry}">
-									<option th:each="c: ${listCountry}" 
-										th:value="${c.idCountry}" th:text="${c.nameCountry}"
-										th:selected="(${c.idCountry} == *{country.idCountry})"></option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="emailInvestor" class="col-sm-2 col-form-label">Email: </label>
-							<div class="col-sm-6">
-								<input type="email" th:field="*{emailInvestor}"
-									class="form-control" required placeholder="Email"
-									th:errorclass="'form-control alert-danger'" />
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<div class="col-sm-6">
-								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/investors/list" class="btn btn-danger">Cancelar</a>
-							</div>
-						</div>
-						<p th:text="${mensaje}"></p>
-					</form>
-
-
-
-
 				</div>
-				<!-- /.container-fluid -->
-
 			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Web 2020</span>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
-
 		</div>
-		<!-- End of Content Wrapper -->
+
+
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy; Web 2020</span>
+				</div>
+			</div>
+		</footer>
+		<!-- End of Footer -->
+
+	</div>
+	<!-- End of Content Wrapper -->
 
 	</div>
 	<!-- End of Page Wrapper -->
@@ -298,10 +231,13 @@
 				<div class="modal-body">Seleccione "Cerrar sesión" a
 					continuación si está listo para finalizar su sesión actual</div>
 				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/categories/index}">Cerrar
-						Sesión</a>
+					<form id="logoutForm" th:action="@{/logout}" method="post">
+						<button class="btn btn-danger"
+							onclick="document.getElementById('logoutForm').submit();"
+							type="submit">Cerrar</button>
+						<button class="btn btn-dark" type="button" data-dismiss="modal"
+							th:href="@{/categories/list}">Cancel</button>
+					</form>
 				</div>
 			</div>
 		</div>

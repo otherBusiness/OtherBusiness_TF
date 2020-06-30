@@ -19,4 +19,9 @@ public interface IProjectRepository extends JpaRepository<Project, Integer>{
 	@Query("from Project p where p.nameProject like %:busqueda%  or p.category.nameCategory like %:busqueda%")
 /*List<Project> findBynameProject(String nameProject);*/
 	List<Project> search(@Param("busqueda") String busqueda);
+	
+	
+	@Query( value="SELECT pr.name_project,sum(ide.amount_Invested) from investors_project i join invesment_details ide on  ide.id_investor_project = i.id_investor_project join projects pr on ide.id_project = pr.id_project group by pr.name_project",
+			nativeQuery = true )
+	public List<String[]> montin();
 }

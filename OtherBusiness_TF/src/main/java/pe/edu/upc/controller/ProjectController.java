@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -224,6 +225,13 @@ public class ProjectController {
 
         return "project/view";
     }
+    
+    @RequestMapping("/reporte1")
+	public String montoInvertido(Map<String, Object> model) {
+		model.put("listMotin", pS.motin());
+		return "reports/proyectosImportados";
+	}
+    
     
     
 }
