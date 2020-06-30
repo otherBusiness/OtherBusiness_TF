@@ -50,7 +50,7 @@ public class ProjectController {
     @Autowired
     private IUploadFileService uploadFileService;
     
-    /*@Secured("ROLE_ESTUDIANTE")*/
+    @Secured("ROLE_STUDENT")
     @GetMapping("/new")
     public String newProject(Model model) {
         model.addAttribute("listCategories", cS.list());
@@ -89,7 +89,7 @@ public class ProjectController {
         
         
     }*/
-    /*@Secured({ "ROLE_INVERSIONISTA", "ROLE_ADMIN","ROLE_ESTUDIANTE"})*/
+    @Secured({ "ROLE_INVESTOR", "ROLE_ADMIN","ROLE_STUDENT"})
     @GetMapping("/list")
     public String listProject(Model model) {
         try {
@@ -170,7 +170,7 @@ public class ProjectController {
                 .body(recurso);
     }
     
-   /* @Secured("ROLE_ESTUDIANTE")*/
+    @Secured({"ROLE_ADMIN","ROLE_STUDENT"})
     @PostMapping("/save")
     public String saveProduct(@Valid Project project, BindingResult result, Model model,
             @RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status) throws Exception {

@@ -31,7 +31,7 @@ public class StudentController {
 	@Autowired
 	private ICampusService cS;
 
-	/* @Secured("ROLE_ESTUDIANTE") */
+	@Secured("ROLE_STUDENT")
 	@GetMapping("/new")
 	public String newStudent(Model model) {
 		model.addAttribute("listCampus", cS.list());
@@ -39,7 +39,7 @@ public class StudentController {
 		return "student/student";
 	}
 
-	/* @Secured({ "ROLE_ADMIN","ROLE_ESTUDIANTE"}) */
+	@Secured({ "ROLE_ADMIN","ROLE_STUDENT"})
 	@GetMapping("/list")
 	public String listStudents(Model model) {
 		try {
@@ -52,7 +52,7 @@ public class StudentController {
 		return "student/listStudents";
 	}
 
-	/* @Secured("ROLE_ESTUDIANTE") */
+	 @Secured({"ROLE_ADMIN","ROLE_STUDENT"})
 	@PostMapping("/save")
 	public String saveStudent(@Validated Student student, BindingResult result, Model model, RedirectAttributes flash)
 			throws Exception {

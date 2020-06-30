@@ -32,7 +32,7 @@ public class InvestorController {
 	@Autowired
 	private ICountryService cS;
 
-	/* @Secured("ROLE_INVERSIONISTA") */
+	@Secured("ROLE_INVESTOR")
 	@GetMapping("/new")
 	public String newInvestor(Model model) {
 		model.addAttribute("listCountry", cS.list());
@@ -40,7 +40,7 @@ public class InvestorController {
 		return "investor/investor";
 	}
 
-	/* @Secured("ROLE_INVERSIONISTA") */
+	@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
 	@PostMapping("/save")
 	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model, RedirectAttributes flash) throws Exception {
 		if (result.hasErrors()) {
@@ -60,7 +60,7 @@ public class InvestorController {
 		}
 	}
 
-	/* @Secured({ "ROLE_INVERSIONISTA", "ROLE_ADMIN" }) */
+	@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
 	@GetMapping("/list")
 	public String listaInvestors(Model model) {
 		try {
