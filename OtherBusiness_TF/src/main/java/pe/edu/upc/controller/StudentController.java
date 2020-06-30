@@ -31,7 +31,6 @@ public class StudentController {
 	
 	@Autowired
 	private ICampusService cS;
-	
 	/*@Secured("ROLE_ESTUDIANTE")*/
 	@GetMapping("/new")
 	public String newStudent(Model model) {
