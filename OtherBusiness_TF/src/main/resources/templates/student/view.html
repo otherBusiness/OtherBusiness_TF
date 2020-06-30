@@ -35,22 +35,15 @@
 			id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			
-		
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/campus/list}">
-				<div class="sidebar-brand-icon">
-					<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-									th:src="@{/img/ob.png}" width="165" height="65" alt="logo"
-									align="middle"></img></span>
+				th:href="@{/categories/list}">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-leaf"></i>
 				</div>
+				<div class="sidebar-brand-text mx-2">Programación en web</div>
 			</a>
-	
-			
-			
-			
+
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
@@ -83,10 +76,7 @@
 						<a class="collapse-item" th:href="@{/users/list}">Usuarios</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/invprojects/list}">Inversiones</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/invprojects/reports}">Reportes</a>
+						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
 				</div></li>
 
@@ -148,7 +138,7 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="campus/index"
+								<a class="dropdown-item" href="categories/index"
 									data-toggle="modal" data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
@@ -159,74 +149,77 @@
 
 				</nav>
 				<!-- End of Topbar -->
+				<div class="container">
+					<div class="card">
+						<div class="card-header text-white bg-dark mb-3">Perfil de Estudiante</div>
+						<div class="card-body">
 
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
+							<div class="table-responsive">
+								<table class="table table-white">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Estudiantes</h1>
+									<tbody>
+										<tr>
+											<td>CODIGO</td>
+											<td th:text="${student.idStudent}"></td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td th:text="${student.customer.firstNameCustomer}"></td>
+										</tr>
+										<tr>
+											<td>APELLIDO</td>
+											<td th:text="${student.customer.lastNameCustomer}"></td>
+										</tr>
+										<tr>
+											<td>DNI Estudiante</td>
+											<td th:text="${student.customer.dniCustomer}"></td>
+										</tr>
+										<tr>
+											<td>CELULAR ESTUDIANTE</td>
+											<td th:text="${student.customer.phoneCustomer}"></td>
+										</tr>
+										<tr>
+											<td>EMAIL ESTUDIANTE</td>
+											<td th:text="${student.emailStudent}"></td>
+										</tr>
+										<tr>
+											<td>CODIGO ESTUDIANTEo</td>
+											<td th:text="${student.codeStudent}"></td>
+										</tr>
+										<tr>
+											<td>CAMPUS</td>
+											<td th:text="${student.campus.nameCampus}"></td>
+										</tr>
+									</tbody>
 
-					<a th:href="@{/students/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
-					
-					<hr class="sidebar-divider">
+								</table>
 
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombres</th>
-								<th scope="col">Apellidos</th>
-								<th scope="col">Email</th>
-								<th scope="col">Codigo de Alumno</th>
-								<th scope="col">DNI</th>
-								<th scope="col">Campus</th>
-								<th scope="col">Operacion</th>
-								<th scope="col">Operacion</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="p: ${listStudents}">
-								<td><a class="btn btn-danger btn-xs"
-									th:href="@{/students/view/} + ${p.idStudent}"
-									th:text="${p.idStudent}"></a></td>
-								<td th:text="${p.customer.firstNameCustomer}"></td>
-								<td th:text="${p.customer.lastNameCustomer}"></td>
-								<td th:text="${p.emailStudent}"></td>
-								<td th:text="${p.codeStudent}"></td>
-								<td th:text="${p.customer.dniCustomer}"></td>
-								<td th:text="${p.campus.nameCampus}"></td>
-								<td><a
-									th:href="@{'/students/delete/'+${p.idStudent}}"> <i
-										class="iconf fa fa-trash" style="color: red"></i>
-								</a></td>
-								<td><a th:href="@{'/students/irupdate/'+${p.idStudent}}">
-										<i class="iconf fa fa-pen" style="color: red"></i>
-								</a></td>
-							</tr>
-						</tbody>
-					</table>
-
-					<p th:text="${mensaje}" class="form-text text-success"></p>
-					<p th:text="${mensaje2}" class="form-text text-success"></p>
-
-				</div>
-				<!-- /.container-fluid -->
-
-			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Web 2020</span>
+								<a th:href="@{/students/list}" type="button"
+									class="btn btn-danger k"> <span
+									class="glyphicon glyphicon-circle-arrow-left"></span> Volver
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
-			</footer>
-			<!-- End of Footer -->
+			</div>
+			<!-- /.container-fluid -->
 
 		</div>
-		<!-- End of Content Wrapper -->
+		<!-- End of Main Content -->
+
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy; Web 2020</span>
+				</div>
+			</div>
+		</footer>
+		<!-- End of Footer -->
+
+	</div>
+	<!-- End of Content Wrapper -->
 
 	</div>
 	<!-- End of Page Wrapper -->
@@ -253,12 +246,12 @@
 					continuación si está listo para finalizar su sesión actual.</div>
 				<div class="modal-footer">
 					<form id="logoutForm" th:action="@{/logout}" method="post">
-							<button class="btn btn-danger"
-								onclick="document.getElementById('logoutForm').submit();"
-								type="submit">Cerrar Sesión</button>
-							<button class="btn btn-dark" type="button" data-dismiss="modal"
-								th:href="@{/students/list}">Cancel</button>
-						</form>
+						<button class="btn btn-danger"
+							onclick="document.getElementById('logoutForm').submit();"
+							type="submit">Cerrar</button>
+						<button class="btn btn-dark" type="button" data-dismiss="modal"
+							th:href="@{/categories/list}">Cancel</button>
+					</form>
 				</div>
 			</div>
 		</div>

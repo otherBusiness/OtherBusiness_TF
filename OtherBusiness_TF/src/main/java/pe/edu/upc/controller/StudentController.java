@@ -121,4 +121,17 @@ public class StudentController {
 		return "student/listStudents";
 	}
 	
+	@GetMapping(value = "/view/{id}")
+    public String ver(@PathVariable(value = "id") Integer id, Model model, RedirectAttributes flash) {
+
+        Optional<Student> student = sS.searchId(id);
+        if (student == null) {
+            flash.addFlashAttribute("error", "El estudiante no existe en la base de datos");
+            return "redirect:/students/list";
+        }
+
+        model.addAttribute("student", student.get());
+
+        return "student/view";
+    }
 }
