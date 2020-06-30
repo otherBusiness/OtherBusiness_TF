@@ -71,7 +71,7 @@ public class InvestorController {
 		return "investor/listInvestors";
 	}
 
-	@GetMapping("/delete/{id}")
+	/*@GetMapping("/delete/{id}")
 	public String deleteInvestor(Model model, @PathVariable(value = "id") int id) {
 		try {
 			if (id > 0) {
@@ -85,7 +85,31 @@ public class InvestorController {
 			model.addAttribute("listInvestors", iS.list());
 		}
 		return "investor/listInvestors";
+	}*/
+	
+	
+	@RequestMapping("/delete/{id}")
+	public String deleteInvestor(Model model, @PathVariable(value = "id") int id) {
+		try {
+			if (id > 0) {
+				iS.delete(id);
+			
+			model.addAttribute("listInvestors", iS.list());
+			model.addAttribute("investor", new Investor());
+			model.addAttribute("mensaje", "Se elimino el inversionista");
+			}
+			
+			return "investor/listInvestors";
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			model.addAttribute("mensaje", "Ocurrio un error al eliminar");
+			model.addAttribute("listInvestors", iS.list());
+		}
+		return "investor/listInvestors";
 	}
+	
+	
 
 	@RequestMapping("/irupdate/{id}")
 	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {

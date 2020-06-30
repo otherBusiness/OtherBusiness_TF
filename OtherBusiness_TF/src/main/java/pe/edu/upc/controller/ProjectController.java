@@ -118,9 +118,8 @@ public class ProjectController {
             System.out.println(e.getMessage());
         model.addAttribute("mensaje","Ocurrio error al eliminar");
         model.addAttribute("listProjects",pS.list());
-        
-        return "project/listProjects";
     }
+        return "project/listProjects";
     }
     
     @RequestMapping("/irupdate/{id}")

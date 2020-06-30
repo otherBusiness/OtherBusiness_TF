@@ -53,4 +53,10 @@ public class CategoryServiceImpl implements ICategoryService{
 		return cR.findBynameCategory(nameCategory);
 	}
 
+	@Override
+	public List<String[]> categorytop() {
+		// TODO Auto-generated method stub
+		return cR.categoryTop();
+	}
+
 }

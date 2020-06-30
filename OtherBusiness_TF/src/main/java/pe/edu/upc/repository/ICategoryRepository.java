@@ -15,4 +15,8 @@ public interface ICategoryRepository extends JpaRepository<Category, Integer> {
 	public int searchCategory(@Param("nameCategory") String nombre);
 
 	List<Category> findBynameCategory(String nameCategory);
+	
+	
+	@Query(value = "SELECT c.name_Category,count(pr.id_project) from public.investors_project i join invesment_details ide on  ide.id_investor_project = i.id_investor_project join projects pr on ide.id_project = pr.id_project join categories c on c.id_category= pr.id_category group by c.name_category ORDER BY COUNT(c.name_category) DESC limit 1", nativeQuery = true)
+	public List<String[]> categoryTop();
 }

@@ -17,4 +17,6 @@ public interface ICategoryService {
 	Optional<Category> searchId(int idCategory);
 
 	List<Category> findNameCategoryFull(String nameCategory);
+	
+	public List<String[]> categorytop();
 }

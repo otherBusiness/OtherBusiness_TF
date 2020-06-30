@@ -2,6 +2,7 @@ package pe.edu.upc.controller;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,4 +133,12 @@ public class CategoryController {
 		return "category/listCategories";
 
 	}
+	
+	@RequestMapping("/reporte2")
+	public String categoryTop(Map<String, Object> model) {
+		model.put("listCategoriesTop", cS.categorytop());
+		return "reports/categoryTop";
+	}
+	
+	
 	}
