@@ -172,7 +172,7 @@
 							<div class="form-group row">
 								<label for="amountInvested" class="col-sm-2 col-form-label">Monto invertido:</label>
 								<div class="col-sm-6">
-									<input type="number" required
+									<input type="number" required placeholder="Monto que desea invertir" step="0.01" min="0.01"
 										th:errorclass="'form-control alert-danger'"
 										th:field="*{amountInvested}" class="form-control" id="amountInvested"></input>
 									<div class="alert alert-danger"

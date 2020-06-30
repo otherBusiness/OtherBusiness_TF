@@ -171,26 +171,26 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombre del Campus</th>
-								<th scope="col">Eliminar</th>
-								<th scope="col">Modificar</th>
+								<th scope="col" class="text-center">Id</th>
+								<th scope="col" class="text-center">Nombre del Campus</th>
+								<th scope="col" class="text-center">Eliminar</th>
+								<th scope="col" class="text-center">Modificar</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="cate: ${listCampus}">
-								<td th:text="${cate.idCampus}"></td>
-								<td th:text="${cate.nameCampus}"></td>
+								<td class="text-center" th:text="${cate.idCampus}"></td>
+								<td class="text-center" th:text="${cate.nameCampus}"></td>
 								
 								
-						     <td><a
-									th:href="@{'/campus/delete/'+${cate.idCampus}}"> <i
+						     <td class="text-center"><a
+									th:href="@{'/campus/delete/'+${cate.idCampus}}"><i
 										class="iconf fa fa-trash" style="color: red"></i>
 								</a></td>
 								
 								
-							 <td><a
-									th:href="@{'/campus/irupdate/'+${cate.idCampus}}">Actualizar <i
+							 <td class="text-center"><a
+									th:href="@{'/campus/irupdate/'+${cate.idCampus}}"><i
 										class="iconf fa fa-pen" style="color: red"></i>
 								</a></td>	
 								

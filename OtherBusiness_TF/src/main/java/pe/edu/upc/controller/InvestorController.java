@@ -42,7 +42,7 @@ public class InvestorController {
 
 	/* @Secured("ROLE_INVERSIONISTA") */
 	@PostMapping("/save")
-	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model) throws Exception {
+	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model, RedirectAttributes flash) throws Exception {
 		if (result.hasErrors()) {
 			model.addAttribute("listCountry", cS.list());
 			return "investor/investor";
@@ -54,6 +54,7 @@ public class InvestorController {
 				return "investor/investor";
 			} else {
 				model.addAttribute("listInvestors", iS.list());
+				flash.addFlashAttribute("mensaje", "Se guardo correctamente");
 				return "redirect:/investors/list";
 			}
 		}
@@ -97,6 +98,7 @@ public class InvestorController {
 			return "investor/listInvestors";
 
 		} catch (Exception e) {
+			model.addAttribute("investor", new Investor());
 			System.out.println(e.getMessage());
 			model.addAttribute("mensaje", "Ocurrio un error al eliminar");
 			model.addAttribute("listInvestors", iS.list());

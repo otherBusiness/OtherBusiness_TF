@@ -39,6 +39,7 @@ public class RolController {
 		} else {
 			rS.insert(role);
 			model.addAttribute("listRoles", rS.list());
+			model.addAttribute("mensaje","Se guardo correctamente");
 			return "rol/listRoles";
 
 		}

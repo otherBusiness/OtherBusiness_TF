@@ -169,18 +169,18 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Rol</th>
-								<th scope="col">Usuario</th>
+								<th class="text-center" scope="col">Id</th>
+								<th class="text-center" scope="col">Rol</th>
+								<th class="text-center" scope="col">Usuario</th>
 
 
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="r: ${listRoles}">
-								<td th:text="${r.idRol}"></td>
-								<td th:text="${r.nameRol}"></td>
-								<td th:text="${r.user.usernameUser}"></td>
+								<td class="text-center" th:text="${r.idRol}"></td>
+								<td class="text-center" th:text="${r.nameRol}"></td>
+								<td class="text-center" th:text="${r.user.usernameUser}"></td>
 
 							</tr>
 						</tbody>

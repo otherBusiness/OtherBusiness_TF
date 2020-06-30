@@ -187,7 +187,9 @@
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">Campus</label>
 							<div class="col-sm-6">
-								<input type="text" pattern="[a-zA-Z]+" th:field="*{nameCampus}" class="form-control"
+								<input type="text" required placeholder="Nombre del campus"
+								pattern="[a-zA-Z]+" title="El Nombre solo admite letras"
+								th:field="*{nameCampus}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('nameCampus')}"

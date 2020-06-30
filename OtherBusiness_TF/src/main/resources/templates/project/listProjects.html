@@ -199,37 +199,37 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Proyecto</th>
-								<th scope="col">Descripcion del proyecto</th>
-								<th scope="col">Costo del proyecto</th>
-								<th scope="col">Fecha de inicio del proyecto</th>
-								<th scope="col">Fecha de fin del proyecto</th>
-								<th scope="col">Categor&iacute;a</th>
-								<th scope="col">Codigo del del estudiante</th>
-								<th scope="col">Eliminar</th>
-								<th scope="col">Modificar</th>
+								<th class="text-center" scope="col">Id</th>
+								<th class="text-center" scope="col">Proyecto</th>
+								<th class="text-center" scope="col">Descripcion del proyecto</th>
+								<th class="text-center" scope="col">Costo del proyecto</th>
+								<th class="text-center" scope="col">Fecha de inicio del proyecto</th>
+								<th class="text-center" scope="col">Fecha de fin del proyecto</th>
+								<th class="text-center" scope="col">Categor&iacute;a</th>
+								<th class="text-center" scope="col">Codigo del del estudiante</th>
+								<th class="text-center" scope="col">Eliminar</th>
+								<th class="text-center" scope="col">Modificar</th>
 
 
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="p: ${listProjects}">
-							<td><a class="btn btn-danger btn-xs"
+							<td class="text-center"><a class="btn btn-danger btn-xs"
 									th:href="@{/projects/view/} + ${p.idProject}"
 									th:text="${p.idProject}"></a></td>
-								<td th:text="${p.nameProject}"></td>
-								<td th:text="${p.descriptionProject}"></td>
-								<td th:text="${p.costProject}"></td>
-								<td th:text="${p.startDateProject}"></td>
-								<td th:text="${p.finishDateProject}"></td>
-								<td th:text="${p.category.nameCategory}"></td>
-								<td th:text="${p.student.codeStudent}"></td>
-								<td><a th:href="@{'/projects/delete/'+${p.idProject}}">
+								<td class="text-center" th:text="${p.nameProject}"></td>
+								<td class="text-center" th:text="${p.descriptionProject}"></td>
+								<td class="text-center" th:text="${p.costProject}"></td>
+								<td class="text-center" th:text="${p.startDateProject}"></td>
+								<td class="text-center" th:text="${p.finishDateProject}"></td>
+								<td class="text-center" th:text="${p.category.nameCategory}"></td>
+								<td class="text-center" th:text="${p.student.codeStudent}"></td>
+								<td class="text-center"><a th:href="@{'/projects/delete/'+${p.idProject}}">
 										<i class="iconf fa fa-trash" style="color: red"></i>
 								</a></td>
-								<td><a th:href="@{'/projects/irupdate/'+${p.idProject}}">
-										<i class="iconf fa fa-pen" style="color: blue"></i>
+								<td class="text-center"><a th:href="@{'/projects/irupdate/'+${p.idProject}}">
+										<i class="iconf fa fa-pen" style="color: red"></i>
 								</a></td>
 							</tr>
 						</tbody>

@@ -39,6 +39,7 @@ public class UserController {
 			users.setPasswordUser(password);
 			uS.insert(users);
 			model.addAttribute("listUsers", uS.list());
+			model.addAttribute("user", "Se guardo correctamente");
 			return "user/listUsers";
 
 		}

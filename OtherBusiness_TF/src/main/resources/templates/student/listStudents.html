@@ -197,33 +197,33 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombres</th>
-								<th scope="col">Apellidos</th>
-								<th scope="col">Email</th>
-								<th scope="col">Codigo de Alumno</th>
-								<th scope="col">DNI</th>
-								<th scope="col">Campus</th>
-								<th scope="col">Operacion</th>
-								<th scope="col">Operacion</th>
+								<th class="text-center" scope="col">Id</th>
+								<th class="text-center" scope="col">Nombres</th>
+								<th class="text-center" scope="col">Apellidos</th>
+								<th class="text-center" scope="col">Email</th>
+								<th class="text-center" scope="col">Codigo de Alumno</th>
+								<th class="text-center" scope="col">DNI</th>
+								<th class="text-center" scope="col">Campus</th>
+								<th class="text-center" scope="col">Operacion</th>
+								<th class="text-center" scope="col">Operacion</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="p: ${listStudents}">
-								<td><a class="btn btn-danger btn-xs"
+								<td class="text-center"><a class="btn btn-danger btn-xs"
 									th:href="@{/students/view/} + ${p.idStudent}"
 									th:text="${p.idStudent}"></a></td>
-								<td th:text="${p.customer.firstNameCustomer}"></td>
-								<td th:text="${p.customer.lastNameCustomer}"></td>
-								<td th:text="${p.emailStudent}"></td>
-								<td th:text="${p.codeStudent}"></td>
-								<td th:text="${p.customer.dniCustomer}"></td>
-								<td th:text="${p.campus.nameCampus}"></td>
-								<td><a
+								<td class="text-center" th:text="${p.customer.firstNameCustomer}"></td>
+								<td class="text-center" th:text="${p.customer.lastNameCustomer}"></td>
+								<td class="text-center" th:text="${p.emailStudent}"></td>
+								<td class="text-center" th:text="${p.codeStudent}"></td>
+								<td class="text-center" th:text="${p.customer.dniCustomer}"></td>
+								<td class="text-center" th:text="${p.campus.nameCampus}"></td>
+								<td class="text-center"><a
 									th:href="@{'/students/delete/'+${p.idStudent}}"> <i
 										class="iconf fa fa-trash" style="color: red"></i>
 								</a></td>
-								<td><a th:href="@{'/students/irupdate/'+${p.idStudent}}">
+								<td class="text-center"><a th:href="@{'/students/irupdate/'+${p.idStudent}}">
 										<i class="iconf fa fa-pen" style="color: red"></i>
 								</a></td>
 							</tr>

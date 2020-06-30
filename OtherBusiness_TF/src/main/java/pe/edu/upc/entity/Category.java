@@ -24,8 +24,6 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategory;
 	
-	@NotEmpty(message="El nombre es obligatorio")
-	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener letras")
 	@Column(name = "nameCategory", nullable = false, length = 25)
 	private String nameCategory;
 

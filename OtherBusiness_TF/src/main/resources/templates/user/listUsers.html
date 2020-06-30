@@ -169,16 +169,16 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">usuario</th>
+								<th class="text-center" scope="col">Id</th>
+								<th class="text-center" scope="col">usuario</th>
 
 
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="u: ${listUsers}">
-								<td th:text="${u.idUser}"></td>
-								<td th:text="${u.usernameUser}"></td>
+								<td class="text-center" th:text="${u.idUser}"></td>
+								<td class="text-center" th:text="${u.usernameUser}"></td>
 							</tr>
 						</tbody>
 					</table>

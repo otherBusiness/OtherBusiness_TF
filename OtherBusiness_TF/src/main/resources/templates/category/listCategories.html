@@ -172,16 +172,16 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombre</th>
+								<th scope="col" class="text-center">Id</th>
+								<th scope="col" class="text-center">Nombre</th>
 								<th scope="col" class="text-center">Eliminar</th>
 								<th scope="col" class="text-center">Modificar</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="cate: ${listCategories}">
-								<td th:text="${cate.idCategory}"></td>
-								<td th:text="${cate.nameCategory}"></td>
+								<td class="text-center" th:text="${cate.idCategory}"></td>
+								<td class="text-center" th:text="${cate.nameCategory}"></td>
 								<td class="text-center"><a
 									th:href="@{'/categories/delete/'+${cate.idCategory}}"><i
 										class="iconf fa fa-trash" style="color: red;"></i></a></td>

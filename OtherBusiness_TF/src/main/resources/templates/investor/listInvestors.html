@@ -193,35 +193,35 @@
 					<table class="table table-striped">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombres</th>
-								<th scope="col">Apellidos</th>
-								<th scope="col">DNI</th>
-								<th scope="col">Celular</th>
-								<th scope="col">RUC</th>
-								<th scope="col">País</th>
-								<th scope="col">Email</th>
-								<th scope="col">Eliminar</th>
-								<th scope="col">Actualizar</th>
+								<th class="text-center" scope="col">Id</th>
+								<th class="text-center" scope="col">Nombres</th>
+								<th class="text-center" scope="col">Apellidos</th>
+								<th class="text-center" scope="col">DNI</th>
+								<th class="text-center" scope="col">Celular</th>
+								<th class="text-center" scope="col">RUC</th>
+								<th class="text-center" scope="col">País</th>
+								<th class="text-center" scope="col">Email</th>
+								<th class="text-center" scope="col">Eliminar</th>
+								<th class="text-center" scope="col">Actualizar</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="inv: ${listInvestors}">
-								<td><a class="btn btn-danger btn-xs"
+								<td class="text-center"><a class="btn btn-danger btn-xs"
 									th:href="@{/investors/view/} + ${inv.idInvestor}"
 									th:text="${inv.idInvestor}"></a></td>
-								<td th:text="${inv.customer.firstNameCustomer}"></td>
-								<td th:text="${inv.customer.lastNameCustomer}"></td>
-								<td th:text="${inv.customer.dniCustomer}"></td>
-								<td th:text="${inv.customer.phoneCustomer}"></td>
-								<td th:text="${inv.rucInvestor}"></td>
-								<td th:text="${inv.country.nameCountry}"></td>
-								<td th:text="${inv.emailInvestor}"></td>
-								<td><a
+								<td class="text-center" th:text="${inv.customer.firstNameCustomer}"></td>
+								<td class="text-center" th:text="${inv.customer.lastNameCustomer}"></td>
+								<td class="text-center" th:text="${inv.customer.dniCustomer}"></td>
+								<td class="text-center" th:text="${inv.customer.phoneCustomer}"></td>
+								<td class="text-center" th:text="${inv.rucInvestor}"></td>
+								<td class="text-center" th:text="${inv.country.nameCountry}"></td>
+								<td class="text-center" th:text="${inv.emailInvestor}"></td>
+								<td class="text-center"><a
 									th:href="@{'/investors/delete/'+${inv.idInvestor}}"> <i
 										class="iconf fa fa-trash" style="color: red"></i>
 								</a></td>
-								<td><a th:href="@{'/investors/irupdate/'+${inv.idInvestor}}">
+								<td class="text-center"><a th:href="@{'/investors/irupdate/'+${inv.idInvestor}}">
 										<i class="iconf fa fa-pen" style="color: red"></i>
 								</a></td>
 							</tr>

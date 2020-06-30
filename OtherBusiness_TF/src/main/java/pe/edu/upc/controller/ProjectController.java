@@ -115,6 +115,7 @@ public class ProjectController {
 			return "project/listProjects";
 			
         }catch(Exception e) {
+        	model.addAttribute("project", new Project());
             System.out.println(e.getMessage());
         model.addAttribute("mensaje","Ocurrio error al eliminar");
         model.addAttribute("listProjects",pS.list());
@@ -207,7 +208,7 @@ public class ProjectController {
             }
         }
         
-        flash.addFlashAttribute("mensaje", "El registro de su proyecto fue exitoso");
+        flash.addFlashAttribute("mensaje", "Se guardo correctamente");
         model.addAttribute("listaProjects", pS.list());
 
         return "redirect:/projects/list";

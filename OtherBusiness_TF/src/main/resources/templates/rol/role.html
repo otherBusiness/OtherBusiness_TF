@@ -177,6 +177,8 @@
 							<label for="rol" class="col-sm-2 col-form-label">Rol</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{nameRol}" class="form-control"
+								required placeholder="Rol" pattern="[ROLE_]+[A-Z]*"
+								title="Utiliza un formato ROLE_[ROL]"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('nameRol')}" th:errors="*{nameRol}"></small>

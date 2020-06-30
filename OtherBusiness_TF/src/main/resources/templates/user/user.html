@@ -176,7 +176,9 @@
 						<div class="form-group row">
 							<label for="username" class="col-sm-2 col-form-label">Usuario</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{usernameUser}" class="form-control"
+								<input type="text" th:field="*{usernameUser}" 
+								 class="form-control" required placeholder="Usuario"
+								pattern="[a-zA-Z0-9]*" title="El Usuario solo puede contener letras y numeros"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('usernameUser')}"
@@ -188,7 +190,7 @@
 							<label for="password" class="col-sm-2 col-form-label">Password</label>
 							<div class="col-sm-6">
 								<input type="password" th:field="*{passwordUser}"
-									class="form-control"
+									class="form-control" required placeholder="Contraseña"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('passwordUser')}"
@@ -201,7 +203,7 @@
 							<label for="estado" class="col-sm-2 col-form-label">Estado</label>
 							<div class="col-sm-6">
 								<input type="checkbox" th:field="*{enabledUser}"
-									class="form-control"
+									class="form-control" required
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('enabledUser')}" th:errors="*{enabledUser}"></small>
