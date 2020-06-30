@@ -177,74 +177,65 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Proyecto</label>
+							<label for="name" class="col-sm-2 col-form-label">Nombre:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{nameProject}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('nameProject')}"
-									th:errors="*{nameProject}"></small>
+									class="form-control" required placeholder="Nombre del proyecto"
+									pattern="[A-Za-z0-9]*"
+									title="El nombre del proyecto solo acepta letras y debe estar junto"
+									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 
 
 						<div class="form-group row">
-							<label for="description" class="col-sm-2 col-form-label">Descripcion
-								del proyecto</label>
+							<label for="description" class="col-sm-2 col-form-label">Descripción:
+							</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{descriptionProject}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('descriptionProject')}"
-									th:errors="*{descriptionProject}"></small>
+									class="form-control" required
+									placeholder="Descripción del proyecto"
+									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 
 
 						<div class="form-group row">
-							<label for="cost" class="col-sm-2 col-form-label">Costo
-								del proyecto</label>
+							<label for="cost" class="col-sm-2 col-form-label">Costo:
+							</label>
 							<div class="col-sm-6">
 								<input type="number" th:field="*{costProject}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('costProject')}"
-									th:errors="*{costProject}"></small>
+									class="form-control" required placeholder="Costo del proyecto"
+									step="0.01" min="0.01"
+									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label for="datestart" class="col-sm-2 col-form-label">Fecha
-								de inicio del proyecto</label>
+								inicio: </label>
 							<div class="col-sm-6">
 								<input type="date" th:field="*{startDateProject}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('startDateProject')}"
-									th:errors="*{startDateProject}"></small>
+									class="form-control" required
+									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label for="datefinish" class="col-sm-2 col-form-label">Fecha
-								de fin del proyecto</label>
+								fin: </label>
 							<div class="col-sm-6">
 								<input type="date" th:field="*{finishDateProject}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('finishDateProject')}"
-									th:errors="*{finishDateProject}"></small>
+									class="form-control" required min="2020-06-30"
+									th:errorclass="'form-control alert-danger'" />
 							</div>
 						</div>
 
 
 						<div class="form-group row">
-							<label for="category">Categoría:</label>
+							<label for="category" class="col-sm-2 col-form-label">Categoría:
+							</label>
 							<div class="col-sm-6">
 								<select class="form-control" th:field="*{category.idCategory}">
 									<option th:each="c: ${listCategories}"
@@ -255,7 +246,8 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="category">Estudiante:</label>
+							<label for="category" class="col-sm-2 col-form-label">Estudiante:
+							</label>
 							<div class="col-sm-6">
 								<select class="form-control" th:field="*{student.idStudent}">
 									<option th:each="s: ${listStudents}" th:value="${s.idStudent}"
@@ -265,10 +257,11 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="file" class="col-sm-2 col-form-label ">Foto:</label>
+							<label for="file" class="col-sm-2 col-form-label ">Foto:
+							</label>
 							<div class="col-sm-6">
 								<input type="file" name="file" class="form-control"
-									th:text="${project.foto}" required="required" />
+									th:text="${project.foto}" />
 							</div>
 						</div>
 				</div>
