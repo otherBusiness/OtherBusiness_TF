@@ -106,6 +106,7 @@ public class InvestorController {
 		return "investor/listInvestors";
 	}
 
+	@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
 	@RequestMapping("/irupdate/{id}")
 	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
 		Optional<Investor> objStu = iS.searchId(id);
