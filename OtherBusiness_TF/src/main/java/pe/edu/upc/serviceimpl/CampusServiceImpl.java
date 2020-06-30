@@ -47,5 +47,11 @@ public class CampusServiceImpl implements ICampusService { // conectar con el re
 		// TODO Auto-generated method stub
 		return cR.findById(idProduct);
 	}
+//reporte de mas campus
+	@Override
+	public List<String[]> masCampus() {
+		// TODO Auto-generated method stub
+		return cR.masCampus();
+	}
 
 }

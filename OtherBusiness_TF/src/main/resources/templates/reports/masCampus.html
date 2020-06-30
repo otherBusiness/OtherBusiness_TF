@@ -54,31 +54,23 @@
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/categories/list}">Categorías</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/campus/list}">Campus</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/students/list}">Estudiantes</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/projects/list}">Proyectos</a>
-					</div>
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/investors/list}">Inversores</a>
+						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/users/list}">Usuarios</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/invprojects/list}">Inversiones</a>
+						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/invprojects/reports}">Reportes</a>
+						<a class="collapse-item" th:href="@{/importations/list}">Importaciones</a>
+					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/importations/reports}">Reportes</a>
 					</div>
 				</div></li>
 
@@ -147,43 +139,31 @@
 
 				</nav>
 				<!-- End of Topbar -->
-				<div class="content container">
-					<div class="cinforeport">
-						<h3 class="title-content">Reportes</h3>
-					</div>
-				</div>
+
 
 				<div class="bg row">
 
-
 					<div class="content container">
-						<div class="creportes d-flex justify-content-around">
-							<div class="cproyecto ">
-								<h3 class="tproyecto ">Proyectos por inversion</h3>
-								<p class="dproyecto ">Lista de proyecos con su monto invertido</p>
-								<a class="lnikp " th:href="@{/projects/reporte1}">Ver
-									Reporte</a>
-							</div>
-							<div class="cproyecto ">
-								<h3 class="tproyecto ">Categorías más presencia en los
-									proyectos invertidos</h3>
-								<p class="dproyecto ">Lista de las categorías más demandadas</p>
-								<a class="lnikp " th:href="@{/categories/reporte2}">Ver
-									Reporte</a>
-							</div>
-							
-							
-							<div class="cproyecto ">
-								<h3 class="tproyecto ">Campus mas usados</h3>
-								<p class="dproyecto ">Lista de la cantidad de campus más importantes</p>
-								<a class="lnikp " th:href="@{/campus/campusmasusado}">Ver
-									Reporte</a>
-							</div>
-							
-							
+						<div class="cinforeport">
+							<h3 class="title-content">Campus mas demandadas</h3>
+							<p class="inforeport">Lista de los campus más usados</p>
 						</div>
-
+						<table class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" class="text-center">Campus</th>
+									<th scope="col" class="text-center">Campus más usados</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="rep : ${listMasCampus}">
+									<td class="text-center" th:text="${rep[0]}"></td>
+									<td class="text-center" th:text="${rep[1]}"></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
+
 				</div>
 
 				<!-- Footer -->
@@ -226,7 +206,7 @@
 						<form id="logoutForm" th:action="@{/logout}" method="post">
 							<button class="btn btn-danger"
 								onclick="document.getElementById('logoutForm').submit();"
-								type="submit">Cerrar Sesión</button>
+								type="submit">Cerrar</button>
 							<button class="btn btn-dark" type="button" data-dismiss="modal"
 								th:href="@{/categories/list}">Cancel</button>
 						</form>

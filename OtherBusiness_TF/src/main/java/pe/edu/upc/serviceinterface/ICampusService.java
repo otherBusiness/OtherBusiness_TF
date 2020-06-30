@@ -17,4 +17,8 @@ public interface ICampusService {
 	
 	
 	Optional<Campus> searchId(int idProduct); //busca el registro q quiero edithar y llevarlo al formulario
+	
+	
+	public List<String[]> masCampus();
+
 }

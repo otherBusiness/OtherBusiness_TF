@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -101,4 +102,11 @@ public class CampusController {
 								
 	}
 	
+	
+	//
+	@RequestMapping("/campusmasusado")
+	public String mayorCampus(Map<String, Object> model) {
+		model.put("listMasCampus", cS.masCampus());
+		return "reports/masCampus";
+	}
 }
