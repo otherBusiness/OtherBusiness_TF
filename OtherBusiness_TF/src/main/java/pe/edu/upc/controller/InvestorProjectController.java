@@ -26,7 +26,7 @@ import pe.edu.upc.serviceinterface.IProjectService;
 
 @Controller
 @RequestMapping("/invprojects")
-@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN"})//@Secured("ROLE_ADMIN")
+@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN"})
 public class InvestorProjectController {
 	
 	@Autowired

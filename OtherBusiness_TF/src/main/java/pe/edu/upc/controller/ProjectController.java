@@ -36,7 +36,7 @@ import pe.edu.upc.serviceinterface.IStudentService;
 
 @Controller
 @RequestMapping("projects")
-@Secured("ROLE_ADMIN")
+@Secured({ "ROLE_ADMIN","ROLE_STUDENT"})
 public class ProjectController {
     @Autowired
     private IProjectService pS;
@@ -50,7 +50,7 @@ public class ProjectController {
     @Autowired
     private IUploadFileService uploadFileService;
     
-    @Secured("ROLE_STUDENT")
+ 
     @GetMapping("/new")
     public String newProject(Model model) {
         model.addAttribute("listCategories", cS.list());
@@ -101,6 +101,7 @@ public class ProjectController {
         return "project/listProjects";
     }
     
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/delete/{id}")
     public String deleteProject(Model model, @PathVariable(value="id")int id) {
         try {
@@ -123,6 +124,7 @@ public class ProjectController {
         return "project/listProjects";
     }
     
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/irupdate/{id}")
  
     public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
@@ -139,7 +141,8 @@ public class ProjectController {
         }
         
     }
-
+    
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/search")
     public String searchCategories(Model model, @Validated Project project) throws ParseException {
         List<Project> listProjects;

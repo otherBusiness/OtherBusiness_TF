@@ -23,7 +23,7 @@ import pe.edu.upc.serviceinterface.IInvestorService;
 
 @Controller
 @RequestMapping("/investors")
-@Secured("ROLE_ADMIN")
+@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
 public class InvestorController {
 
 	@Autowired
@@ -32,7 +32,7 @@ public class InvestorController {
 	@Autowired
 	private ICountryService cS;
 
-	@Secured("ROLE_INVESTOR")
+	
 	@GetMapping("/new")
 	public String newInvestor(Model model) {
 		model.addAttribute("listCountry", cS.list());
@@ -40,7 +40,7 @@ public class InvestorController {
 		return "investor/investor";
 	}
 
-	@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
+	
 	@PostMapping("/save")
 	public String saveInvestor(@Validated Investor investor, BindingResult result, Model model, RedirectAttributes flash) throws Exception {
 		if (result.hasErrors()) {
@@ -60,7 +60,7 @@ public class InvestorController {
 		}
 	}
 
-	@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
+	
 	@GetMapping("/list")
 	public String listaInvestors(Model model) {
 		try {
@@ -84,6 +84,7 @@ public class InvestorController {
 	 * "investor/listInvestors"; }
 	 */
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/delete/{id}")
 	public String deleteInvestor(Model model, @PathVariable(value = "id") int id) {
 		try {
@@ -106,7 +107,7 @@ public class InvestorController {
 		return "investor/listInvestors";
 	}
 
-	@Secured({ "ROLE_INVESTOR", "ROLE_ADMIN" })
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/irupdate/{id}")
 	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
 		Optional<Investor> objStu = iS.searchId(id);
@@ -119,7 +120,8 @@ public class InvestorController {
 			return "investor/investor";
 		}
 	}
-
+	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/searchruc")
 	public String searchRucInvestor(Model model, @Validated Investor investor) throws ParseException {
 		List<Investor> listInvestors;
