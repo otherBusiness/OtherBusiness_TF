@@ -77,14 +77,19 @@ public class StudentController {
 	}
 
 	
-	@GetMapping("/delete/{id}")
+	@RequestMapping("/delete/{id}")
 	public String deleteStudent(Model model, @PathVariable(value = "id")int id) {
 		try {
 			if(id > 0) {
 				sS.delete(id);
+				
+				model.addAttribute("listStudents", sS.list());
+				model.addAttribute("student", new Student());
+				model.addAttribute("mensaje", "Se elimino el estudiante");
 			}	
-			model.addAttribute("listStudents", sS.list());
-			model.addAttribute("mensaje", "Se elimino el estudiante");
+			
+			return "student/listStudents";
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			model.addAttribute("mensaje", "Ocurrio un error al eliminar");

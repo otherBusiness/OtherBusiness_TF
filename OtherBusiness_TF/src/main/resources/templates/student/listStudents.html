@@ -169,6 +169,27 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 text-gray-800">Estudiantes</h1>
 
+					<form th:action="@{/students/search}" method="post"
+						th:object="${student}">
+						<div class="form-group">
+							<table>
+								<tbody>
+									<tr>
+										<td><label for="emailStudent"
+											class="col-sm-2 col-form-label">Buscar:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{emailStudent}" id="emailStudent"
+											placeholder="Email del estudiante"></input></td>
+										<td><button type="submit" class="btn btn-danger">
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/students/list" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>	
+					
 					<a th:href="@{/students/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 					
 					<hr class="sidebar-divider">
