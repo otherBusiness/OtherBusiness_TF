@@ -29,7 +29,7 @@ public class Student implements Serializable{
 	@Column(name = "emailStudent", nullable = false, length = 25)
 	private String emailStudent;
 	
-	@Column(name = "codeStudent", nullable = false, unique = true, length = 9)
+	@Column(name = "codeStudent", nullable = false, unique = true, length = 25)
 	private String codeStudent;
 	
 	@OneToOne(cascade = CascadeType.ALL)

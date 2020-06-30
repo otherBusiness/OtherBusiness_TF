@@ -28,10 +28,10 @@ public class Customer implements Serializable{
 	@Column(name = "lastNameCustomer", nullable = false, length = 50)
 	private String lastNameCustomer;
 	
-	@Column (name = "dniCustomer", nullable = false, length = 8)
+	@Column (name = "dniCustomer", nullable = false, length = 25)
 	private String dniCustomer;
 	
-	@Column(name = "phoneCustomer", nullable = false, length = 9)
+	@Column(name = "phoneCustomer", nullable = false, length = 25)
 	private String phoneCustomer;
 
 	public Customer() {
